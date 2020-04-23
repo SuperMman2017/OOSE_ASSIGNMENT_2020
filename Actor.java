@@ -1,11 +1,13 @@
 /*  Class actor that can represent player/enemy 
     or possible NPC in the game*/
-public abstract class Actor
+public abstract class Actor implements IAttackable, IDefendable
 {
+    public static final int MIN_HEALTH = 0;
     private String name;
     private int maxHealth;
     private int currentHealth;
-    
+    private int maxDef;
+    private int minDef;
 
     public Actor(String name,int currentHealth,int maxHealth)
     {
@@ -33,6 +35,10 @@ public abstract class Actor
         this.maxHealth = maxHealth;
     }
 
+    public void setDefense(int minDef, int maxDef)
+    {
+
+    }
 
     public String getName()
     {
@@ -47,5 +53,21 @@ public abstract class Actor
     public int getCurrentHealth()
     {
         return currentHealth;
+    }
+    
+    public int getMinDefense()
+    {
+        return minDef; 
+    }
+
+    public int getMaxDefense()
+    {
+        return maxDef;
+    }
+
+
+    public boolean isKnockedOut()
+    {
+        return currentHealth <= MIN_HEALTH;
     }
 }

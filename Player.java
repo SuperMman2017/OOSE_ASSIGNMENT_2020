@@ -1,4 +1,4 @@
-public class Player extends Actor implements IAttackable, IDefendable
+public class Player extends Actor
 {
     public static final int DEFAULT_PLAYER_HP = 30;
     private int gold;
@@ -9,6 +9,7 @@ public class Player extends Actor implements IAttackable, IDefendable
         super(name,DEFAULT_PLAYER_HP,DEFAULT_PLAYER_HP);
 
     }
+
     @Override
     public void defend()
     {
@@ -21,5 +22,5 @@ public class Player extends Actor implements IAttackable, IDefendable
         
     }
 
-    
+
 }
