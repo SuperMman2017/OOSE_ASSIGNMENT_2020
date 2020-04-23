@@ -37,7 +37,8 @@ public abstract class Actor implements IAttackable, IDefendable
 
     public void setDefense(int minDef, int maxDef)
     {
-
+        this.minDef = minDef;
+        this.maxDef = maxDef;
     }
 
     public String getName()
