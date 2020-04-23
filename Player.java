@@ -7,7 +7,18 @@ public class Player extends Actor
     public Player(String name)
     {
         super(name,DEFAULT_PLAYER_HP,DEFAULT_PLAYER_HP);
+    }
 
+    @Override
+    public Actor clone()
+    {
+        Player player = new Player(getName());
+        player.setDefense(getMinDefense(), getMaxDefense());
+        player.setHealth(getCurrentHealth());
+        player.setMaxHealth(getMaxHealth());
+        player.setGold(this.gold);
+
+        return player;
     }
 
     @Override
@@ -21,6 +32,13 @@ public class Player extends Actor
     {
         
     }
+    public int getCurrentGold()
+    {
+        return this.gold;
+    }
 
-
+    public void setGold(int gold)
+    {
+        this.gold = gold;
+    }
 }
