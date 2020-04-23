@@ -4,8 +4,12 @@ public abstract class Actor implements IAttackable, IDefendable
 {
     public static final int MIN_HEALTH = 0;
     private String name;
+
+    private int damage; 
+
     private int maxHealth;
     private int currentHealth;
+    
     private int maxDef;
     private int minDef;
 
@@ -14,6 +18,7 @@ public abstract class Actor implements IAttackable, IDefendable
         this.name = name;
         this.currentHealth = currentHealth;
         this.maxHealth = maxHealth;
+        this.damage = 0;
     }
 
     /*Clone method to return the clone copy of the current Actor object*/
@@ -23,6 +28,11 @@ public abstract class Actor implements IAttackable, IDefendable
     public Actor copy()
     {
         return this;
+    }
+
+    public void setAttack(int damage)
+    {
+        this.damage = damage;
     }
 
     public void setHealth(int currentHealth)
@@ -35,9 +45,13 @@ public abstract class Actor implements IAttackable, IDefendable
         this.maxHealth = maxHealth;
     }
 
-    public void setDefense(int minDef, int maxDef)
+    public void setMinDefense(int minDef)
     {
         this.minDef = minDef;
+    }
+    
+    public void setMaxDefense(int maxDef)
+    {
         this.maxDef = maxDef;
     }
 
@@ -55,7 +69,7 @@ public abstract class Actor implements IAttackable, IDefendable
     {
         return currentHealth;
     }
-    
+
     public int getMinDefense()
     {
         return minDef; 

@@ -1,4 +1,4 @@
-public abstract Item
+public class Item
 {
     private String name;
     private int cost;
@@ -9,7 +9,7 @@ public abstract Item
         this.cost = cost;
     }
 
-    public int setCost(int cost)
+    public void setCost(int cost)
     {
         this.cost = cost;
     }
