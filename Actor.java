@@ -80,7 +80,7 @@ public abstract class Actor implements IAttackable, IDefendable
         return maxDef;
     }
 
-    public int getAttack()
+    public int getDamage()
     {
         return damage;
     }

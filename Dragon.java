@@ -2,13 +2,15 @@ import java.util.Random;
 
 public class Dragon extends Actor implements SpecialAbility
 {
-    public static final String DRAON = "Dragon";
+    public static final String DRAGON = "Dragon";
     public static final int DRAGON_MAX_HEALTH = 100;
     public static final int HEAL_DRAGON = 10;
 
     public static final int DRAGON_MIN_DAMAGE = 15;
     public static final int DRAGON_MAX_DAMAGE = 30;
 
+    public static final int DRAGON_MIN_DEFENSE = 15;
+    public static final int DRAGON_MAX_DEFENSE = 20;
 
     public static final int DRAGON_GOLD = 100;
 
@@ -22,15 +24,21 @@ public class Dragon extends Actor implements SpecialAbility
     
     public Dragon()
     {
-        
-        setDragonDamage();
-        specialAffectChanges = false;
+        super(DRAGON, DRAGON_MAX_HEALTH,DRAGON_MAX_HEALTH);
 
+        setAttack(DRAGON_MIN_DAMAGE);
+        setDragonDefense();
+
+        specialAffectChanges = false;
     }
     @Override
     public Actor clone()
     {
         Actor dragon = new Dragon();
+        
+        dragon.setAttack(getDamage());
+        dragon.setMinDefense(getMinDefense());
+        dragon.setMaxDefense(getMaxDefense());
 
         return dragon;
     }
@@ -54,7 +62,8 @@ public class Dragon extends Actor implements SpecialAbility
             
             /** Return attack to normal after casting 
                 it's special attack**/
-            setAttack(getAttack() / 2);
+            setAttack(getDamage() / 2);
+            specialAffectChanges = false; 
         }
     }
 
@@ -68,16 +77,11 @@ public class Dragon extends Actor implements SpecialAbility
     @Override
     public void specialAbility()
     {
-        Random rand = new Random();
-        int chance = rand.nextInt(100);
-        
-        //
-        if(chance < SPECIAL_ATTACK_CHANCE)
+        if(Probability.getChance(SPECIAL_ATTACK_CHANCE))
         {
-            int anotherChance = rand.nextInt(100);
 
             //10% chance to heal for 10 Health
-            if(anotherChance >= RECOVER_HEALTH_CHANCE )
+            if(Probability.getChance(DOUBLE_DAMAGE_CHANCE))
             {
                 if(getCurrentHealth() != getMaxHealth())
                 {
@@ -86,9 +90,9 @@ public class Dragon extends Actor implements SpecialAbility
             }
 
             //Set dragon's attack to double damage on 25% chance
-            else if(anotherChance >= DOUBLE_DAMAGE_CHANCE)
+            else if(Probability.getChance(RECOVER_HEALTH_CHANCE))
             {
-                setAttack(getAttack() * 2);
+                setAttack(getDamage() * 2);
                 specialAffectChanges = true;
             }
         }
@@ -101,15 +105,15 @@ public class Dragon extends Actor implements SpecialAbility
         getCurrentHealth() + ", " + getMaxHealth();
     }
 
-    private void setDragonDamage()
+    private void setDragonDefense()
     {
         Random rand = new Random();
         //Random number 15-20
-        int minDamage = rand.nextInt(DRAGON_MAX_DAMAGE + 1) + DRAGON_MIN_DAMAGE % DRAGON_MAX_DAMAGE;
+        int minDef = rand.nextInt(DRAGON_MAX_DEFENSE + 1) + DRAGON_MIN_DEFENSE % DRAGON_MAX_DEFENSE;
         
-        int maxDamage = rand.nextInt(minDamage + 1) + DRAGON_MIN_DAMAGE % DRAGON_MAX_DAMAGE;
+        int maxDef = rand.nextInt(minDef + 1) + DRAGON_MIN_DEFENSE % DRAGON_MAX_DEFENSE;
 
-        setMinDefense(minDamage);
-        setMaxDefense(maxDamage);
+        setMinDefense(minDef);
+        setMaxDefense(maxDef);
     }
 }
