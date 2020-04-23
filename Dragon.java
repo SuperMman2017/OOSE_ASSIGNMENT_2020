@@ -18,14 +18,21 @@ public class Dragon extends Actor implements SpecialAbility
     public static final int RECOVER_HEALTH_CHANCE = 90;
 
     private boolean specialAffectChanges;
+    
+    
     public Dragon()
     {
+        
+        setDragonDamage();
         specialAffectChanges = false;
+
     }
     @Override
     public Actor clone()
     {
-        return null;
+        Actor dragon = new Dragon();
+
+        return dragon;
     }
 
     @Override
@@ -92,5 +99,17 @@ public class Dragon extends Actor implements SpecialAbility
     {
         return DRAGON + ", " + getDamage() + ", " + 
         getCurrentHealth() + ", " + getMaxHealth();
+    }
+
+    private void setDragonDamage()
+    {
+        Random rand = new Random();
+        //Random number 15-20
+        int minDamage = rand.nextInt(DRAGON_MAX_DAMAGE + 1) + DRAGON_MIN_DAMAGE % DRAGON_MAX_DAMAGE;
+        
+        int maxDamage = rand.nextInt(minDamage + 1) + DRAGON_MIN_DAMAGE % DRAGON_MAX_DAMAGE;
+
+        setMinDefense(minDamage);
+        setMaxDefense(maxDamage);
     }
 }
