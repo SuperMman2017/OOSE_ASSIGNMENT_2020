@@ -77,11 +77,12 @@ public class Dragon extends Actor implements SpecialAbility
     @Override
     public void specialAbility()
     {
-        if(Probability.getChance(SPECIAL_ATTACK_CHANCE))
+        Probability prob = new Probability();
+        if(prob.getChance(SPECIAL_ATTACK_CHANCE))
         {
 
             //10% chance to heal for 10 Health
-            if(Probability.getChance(DOUBLE_DAMAGE_CHANCE))
+            if(prob.getChance(DOUBLE_DAMAGE_CHANCE))
             {
                 if(getCurrentHealth() != getMaxHealth())
                 {
@@ -90,7 +91,7 @@ public class Dragon extends Actor implements SpecialAbility
             }
 
             //Set dragon's attack to double damage on 25% chance
-            else if(Probability.getChance(RECOVER_HEALTH_CHANCE))
+            else if(prob.getChance(RECOVER_HEALTH_CHANCE))
             {
                 setAttack(getDamage() * 2);
                 specialAffectChanges = true;

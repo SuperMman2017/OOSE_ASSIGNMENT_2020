@@ -13,9 +13,13 @@ public class Player extends Actor
     public Actor clone()
     {
         Player player = new Player(getName());
-        player.setDefense(getMinDefense(), getMaxDefense());
+
+        player.setMinDefense(getMinDefense());
+        player.setMaxDefense(getMaxDefense());
+
         player.setHealth(getCurrentHealth());
         player.setMaxHealth(getMaxHealth());
+       
         player.setGold(this.gold);
 
         return player;

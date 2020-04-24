@@ -3,12 +3,26 @@ import java.util.Random;
 public class Probability
 {
     private static Random rand;
+    public static final int MAX_CHANCE = 100;
 
-    public static boolean getChance(int prob)
+    public Probability()
     {
         rand = new Random();
-        int chance = rand.nextInt(prob+1);
-
+    }
+    public boolean getChance(int prob)
+    {
+        if(prob >= 100)
+        {
+            return true;
+        }
+        int chance = rand.nextInt();
         return chance >= prob;
     }
+
+    //Returns a pseudo-random number between upper bound and lower bound
+    public int getRandomNumberBetween(int lowerBound, int upperBound)
+    {
+        return rand.nextInt(upperBound) + lowerBound % upperBound;
+    }
+
 }

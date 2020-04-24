@@ -9,36 +9,45 @@ public class Slime extends Actor implements SpecialAbility
     public static final int DAMAGE_ON_SPECIAL = 0;
 
 
-    public static final String SLIME_MAX_DEFENSE = 2;
-    public static final String SLIME_MIN_DEFENSE = 0;
+    public static final int SLIME_MAX_DEFENSE = 2;
+    public static final int SLIME_MIN_DEFENSE = 0;
 
     public static final int SLIME_HEALTH = 10;
 
+
+    //Default consructor
     public Slime()
     {
         super(SLIME, SLIME_HEALTH,SLIME_HEALTH);
+        setDefaultDefense();
     }
 
-    public Slime(int minDef,int maxDef)
+    public Slime(int attack)
     {
         super("Slime", SLIME_HEALTH,SLIME_HEALTH);
-        setDefense(minDef,maxDef);
-        setAttack(SLIME_DAMAGE_MIN);
+        setDefaultDefense();
+        setAttack(attack);
     }
 
     @Override
     public Actor clone()
     {
-        Slime slime = new Slime(getMinDefense(),getMaxDefense());
+        Slime slime = new Slime();
         return slime;
     }
 
     @Override
     public void attack()
     {
+        /** Special ability attack is called
+         *  On every attack**/
         specialAbility();
+        //Slime casts an attack here
+        
+        //code
 
-        setAttack();
+        //Set back to default 
+        setAttack(SLIME_DAMAGE_MIN);
     }
 
     @Override
@@ -58,13 +67,17 @@ public class Slime extends Actor implements SpecialAbility
         }
     }
 
-
+    /**On object creation a defense is randomly generated  **/
     private void setDefaultDefense()
     {
         Random rand = new Random();
         int defense = rand.nextInt(SLIME_MAX_DEFENSE - SLIME_DAMAGE_MIN + 1);
-        setDefense(defense, defense);
+        setMinDefense(defense);
+        setMaxDefense(defense);
     }
 
-    
+    public String toString()
+    {
+        return SLIME + ", MINDEF:" + getMinDefense() + ", MAXDEF" + getMaxDefense() + 
+    }
 }

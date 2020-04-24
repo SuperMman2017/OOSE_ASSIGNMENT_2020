@@ -3,6 +3,10 @@
 public abstract class Actor implements IAttackable, IDefendable
 {
     public static final int MIN_HEALTH = 0;
+
+    public static final int DEFAULT_HEALTH = 10;
+
+    public static final int DEFAULT_DAMAGE = 2;
     private String name;
 
     private int damage; 
@@ -12,6 +16,13 @@ public abstract class Actor implements IAttackable, IDefendable
     
     private int maxDef;
     private int minDef;
+    public Actor(String name)
+    {
+        this.name = name;
+        currentHealth = DEFAULT_HEALTH;
+        maxHealth = DEFAULT_HEALTH;
+        damage = DEFAULT_DAMAGE;
+    }
 
     public Actor(String name,int currentHealth,int maxHealth)
     {
