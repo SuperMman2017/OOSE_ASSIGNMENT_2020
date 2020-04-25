@@ -1,11 +1,10 @@
-import java.util.Random;
-public class Slime extends Actor implements SpecialAbility
+public class Slime extends Enemy implements SpecialAbility
 {
 
     public static final String SLIME = "Slime";
 
-    public static final int SLIME_DAMAGE_MIN = 3;
-    public static final int SLIME_DAMAGE_MAX = 5;
+    public static final int SLIME_MIN_DAMAGE = 3;
+    public static final int SLIME_MAX_DAMAGE = 5;
     public static final int DAMAGE_ON_SPECIAL = 0;
 
 
@@ -14,70 +13,50 @@ public class Slime extends Actor implements SpecialAbility
 
     public static final int SLIME_HEALTH = 10;
 
+    public static final int SPECIAL_ATTACK_CHANCE = 20;
+
+    public static final int SLIME_GOLD_DROP = 10;
 
     //Default consructor
     public Slime()
     {
         super(SLIME, SLIME_HEALTH,SLIME_HEALTH);
-        setDefaultDefense();
-    }
-
-    public Slime(int attack)
-    {
-        super("Slime", SLIME_HEALTH,SLIME_HEALTH);
-        setDefaultDefense();
-        setAttack(attack);
+        rngDefense(SLIME_MIN_DEFENSE, SLIME_MAX_DEFENSE);
+        setAttack(SLIME_MIN_DAMAGE);
+        setGold(SLIME_GOLD_DROP);
     }
 
     @Override
     public Actor clone()
     {
-        Slime slime = new Slime();
+        Actor slime = new Slime();
+        slime.setDefense(getDefense());
+        slime.setAttack(getDamage());
+        slime.setHealth(getCurrentHealth());
+
         return slime;
     }
 
     @Override
     public void attack()
     {
-        /** Special ability attack is called
-         *  On every attack**/
-        specialAbility();
-        //Slime casts an attack here
         
-        //code
-
-        //Set back to default 
-        setAttack(SLIME_DAMAGE_MIN);
-    }
-
-    @Override
-    public void defend()
-    {
-
     }
 
     @Override
     public void specialAbility()
     {
-        Random rand = new Random();
-        int chance = rand.nextInt(100);   
-        if(chance <= 20)
+        Probability prob = new Probability();
+        if(prob.getChance(SPECIAL_ATTACK_CHANCE))
         {
             setAttack(DAMAGE_ON_SPECIAL);
+            attack();
         }
     }
 
-    /**On object creation a defense is randomly generated  **/
-    private void setDefaultDefense()
-    {
-        Random rand = new Random();
-        int defense = rand.nextInt(SLIME_MAX_DEFENSE - SLIME_DAMAGE_MIN + 1);
-        setMinDefense(defense);
-        setMaxDefense(defense);
-    }
 
     public String toString()
     {
-        return SLIME + ", MINDEF:" + getMinDefense() + ", MAXDEF" + getMaxDefense() + 
+        return SLIME;
     }
 }

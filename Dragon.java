@@ -1,6 +1,4 @@
-import java.util.Random;
-
-public class Dragon extends Actor implements SpecialAbility
+public class Dragon extends Enemy implements SpecialAbility
 {
     public static final String DRAGON = "Dragon";
     public static final int DRAGON_MAX_HEALTH = 100;
@@ -27,19 +25,17 @@ public class Dragon extends Actor implements SpecialAbility
         super(DRAGON, DRAGON_MAX_HEALTH,DRAGON_MAX_HEALTH);
 
         setAttack(DRAGON_MIN_DAMAGE);
-        setDragonDefense();
-
+        rngDefense(DRAGON_MIN_DEFENSE,DRAGON_MAX_DEFENSE);
         specialAffectChanges = false;
     }
+
+
     @Override
     public Actor clone()
     {
         Actor dragon = new Dragon();
-        
         dragon.setAttack(getDamage());
-        dragon.setMinDefense(getMinDefense());
-        dragon.setMaxDefense(getMaxDefense());
-
+        dragon.setDefense(getDefense());
         return dragon;
     }
 
@@ -65,12 +61,6 @@ public class Dragon extends Actor implements SpecialAbility
             setAttack(getDamage() / 2);
             specialAffectChanges = false; 
         }
-    }
-
-    @Override
-    public void defend()
-    {
-
     }
 
 
@@ -104,17 +94,5 @@ public class Dragon extends Actor implements SpecialAbility
     {
         return DRAGON + ", " + getDamage() + ", " + 
         getCurrentHealth() + ", " + getMaxHealth();
-    }
-
-    private void setDragonDefense()
-    {
-        Random rand = new Random();
-        //Random number 15-20
-        int minDef = rand.nextInt(DRAGON_MAX_DEFENSE + 1) + DRAGON_MIN_DEFENSE % DRAGON_MAX_DEFENSE;
-        
-        int maxDef = rand.nextInt(minDef + 1) + DRAGON_MIN_DEFENSE % DRAGON_MAX_DEFENSE;
-
-        setMinDefense(minDef);
-        setMaxDefense(maxDef);
     }
 }

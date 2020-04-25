@@ -19,7 +19,7 @@ public class Probability
         return chance >= prob;
     }
 
-    //Returns a pseudo-random number between upper bound and lower bound
+    /**Returns a pseudo-random number between upper bound and lower bound**/
     public int getRandomNumberBetween(int lowerBound, int upperBound)
     {
         return rand.nextInt(upperBound) + lowerBound % upperBound;

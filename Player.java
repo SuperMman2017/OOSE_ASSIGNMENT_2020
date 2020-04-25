@@ -14,21 +14,12 @@ public class Player extends Actor
     {
         Player player = new Player(getName());
 
-        player.setMinDefense(getMinDefense());
-        player.setMaxDefense(getMaxDefense());
-
         player.setHealth(getCurrentHealth());
         player.setMaxHealth(getMaxHealth());
        
         player.setGold(this.gold);
 
         return player;
-    }
-
-    @Override
-    public void defend()
-    {
-
     }
 
     @Override

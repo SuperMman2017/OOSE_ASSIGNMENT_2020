@@ -1,6 +1,6 @@
 /*  Class actor that can represent player/enemy 
     or possible NPC in the game*/
-public abstract class Actor implements IAttackable, IDefendable
+public abstract class Actor implements IAttackable
 {
     public static final int MIN_HEALTH = 0;
 
@@ -14,8 +14,7 @@ public abstract class Actor implements IAttackable, IDefendable
     private int maxHealth;
     private int currentHealth;
     
-    private int maxDef;
-    private int minDef;
+    private int defense;
     public Actor(String name)
     {
         this.name = name;
@@ -33,7 +32,6 @@ public abstract class Actor implements IAttackable, IDefendable
     }
 
     /*Clone method to return the clone copy of the current Actor object*/
-    
     public abstract Actor clone();
 
     public Actor copy()
@@ -56,14 +54,9 @@ public abstract class Actor implements IAttackable, IDefendable
         this.maxHealth = maxHealth;
     }
 
-    public void setMinDefense(int minDef)
+    public void setDefense(int defense)
     {
-        this.minDef = minDef;
-    }
-    
-    public void setMaxDefense(int maxDef)
-    {
-        this.maxDef = maxDef;
+        this.defense = defense;
     }
 
     public String getName()
@@ -81,19 +74,14 @@ public abstract class Actor implements IAttackable, IDefendable
         return currentHealth;
     }
 
-    public int getMinDefense()
-    {
-        return minDef; 
-    }
-
-    public int getMaxDefense()
-    {
-        return maxDef;
-    }
-
     public int getDamage()
     {
         return damage;
+    }
+
+    public int getDefense()
+    {
+        return defense;
     }
 
     public boolean isKnockedOut()
