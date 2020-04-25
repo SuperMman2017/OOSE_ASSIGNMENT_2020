@@ -92,7 +92,6 @@ public class Dragon extends Enemy implements SpecialAbility
     @Override
     public String toString()
     {
-        return DRAGON + ", " + getDamage() + ", " + 
-        getCurrentHealth() + ", " + getMaxHealth();
+        return DRAGON; 
     }
 }

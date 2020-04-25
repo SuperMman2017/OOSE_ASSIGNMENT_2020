@@ -9,7 +9,8 @@ public class Ogre extends Enemy implements SpecialAbility{
 
     public static final int OGRE_MIN_DAMAGE = 5;
     public static final int OGRE_MAX_DAMAGE = 10;
-
+    
+    public static final int OGRE_SPECIAL_CHANCE = 20;
     public Ogre()
     {
         super(OGRE, OGRE_MAX_HEALTH,OGRE_MAX_HEALTH);
@@ -21,7 +22,11 @@ public class Ogre extends Enemy implements SpecialAbility{
     @Override
     public void attack()
     {
+        Probability damageProb = new Probability();
 
+        int damage = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
+
+        //Do damage
     }
 
 
@@ -40,6 +45,17 @@ public class Ogre extends Enemy implements SpecialAbility{
     @Override
     public void specialAbility()
     {
+        Probability prob = new Probability();
+        if(prob.getChance(OGRE_SPECIAL_CHANCE))
+        {
+            attack();
+            attack();
+        }
+    }
 
+    @Override
+    public String toString()
+    {
+        return OGRE;
     }
 }

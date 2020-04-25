@@ -9,6 +9,8 @@ public class Probability
     {
         rand = new Random();
     }
+
+    /**Returns boolean of the probability occured for the paramater prob **/
     public boolean getChance(int prob)
     {
         if(prob >= 100)
@@ -22,7 +24,7 @@ public class Probability
     /**Returns a pseudo-random number between upper bound and lower bound**/
     public int getRandomNumberBetween(int lowerBound, int upperBound)
     {
-        return rand.nextInt(upperBound) + lowerBound % upperBound;
+        return rand.nextInt(upperBound - lowerBound+1) + lowerBound;
     }
 
 }
