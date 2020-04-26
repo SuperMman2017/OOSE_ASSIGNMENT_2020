@@ -33,6 +33,10 @@ public abstract class Actor implements IAttackable
         return this;
     }
 
+    public void loseHealth(int netDamage) {
+
+    }
+    
     public void setAttack(int damage) {
         this.damage = damage;
     }
