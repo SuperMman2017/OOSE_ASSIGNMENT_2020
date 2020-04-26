@@ -1,26 +1,21 @@
-public class Item
-{
+public class Item {
     private String name;
     private int cost;
 
-    public Item(String name, int cost)
-    {
+    public Item(String name, int cost) {
         this.name = name;
         this.cost = cost;
     }
 
-    public void setCost(int cost)
-    {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public int getCost()
-    {
+    public int getCost() {
         return cost;
     }
 }

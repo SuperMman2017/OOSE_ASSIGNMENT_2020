@@ -10,6 +10,8 @@ public class clas_tester {
         testGoblin();
 
         testOgre();
+        
+        testPlayer();
     }
 
     public static void testSlime()
@@ -32,7 +34,8 @@ public class clas_tester {
     {
         Enemy ogre = new Ogre();
         Actor act = (Actor)ogre;
-
+        Enemy downcast = (Enemy)act;
+        downcast.specialAbility();
         System.out.println(act.toString() + act.getDefense());
     }
 
@@ -42,5 +45,14 @@ public class clas_tester {
         Actor act = (Actor)goblin;
         
         System.out.println(act.toString() + act.getDefense());
+    }
+
+    public static void testPlayer()
+    {
+        Player player = new Player();
+        Actor upcast = (Actor)player;
+        Player downcast = (Player)upcast;
+        downcast.getCurrentGold();
+        System.out.println(downcast.toString() + downcast.getCurrentGold());
     }
 }

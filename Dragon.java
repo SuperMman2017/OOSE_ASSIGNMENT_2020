@@ -1,4 +1,4 @@
-public class Dragon extends Enemy implements SpecialAbility
+public class Dragon extends Enemy
 {
     public static final String DRAGON = "Dragon";
     public static final int DRAGON_MAX_HEALTH = 100;
@@ -12,16 +12,13 @@ public class Dragon extends Enemy implements SpecialAbility
 
     public static final int DRAGON_GOLD = 100;
 
-
     public static final int SPECIAL_ATTACK_CHANCE = 35;
     public static final int DOUBLE_DAMAGE_CHANCE = 75;
     public static final int RECOVER_HEALTH_CHANCE = 90;
 
     private boolean specialAffectChanges;
     
-    
-    public Dragon()
-    {
+    public Dragon() {
         super(DRAGON, DRAGON_MAX_HEALTH,DRAGON_MAX_HEALTH);
 
         setAttack(DRAGON_MIN_DAMAGE);
@@ -29,10 +26,8 @@ public class Dragon extends Enemy implements SpecialAbility
         specialAffectChanges = false;
     }
 
-
     @Override
-    public Actor clone()
-    {
+    public Actor clone() {
         Actor dragon = new Dragon();
         dragon.setAttack(getDamage());
         dragon.setDefense(getDefense());
@@ -40,18 +35,15 @@ public class Dragon extends Enemy implements SpecialAbility
     }
 
     @Override
-    public void attack()
-    {
+    public void attack() {
         specialAbility();
-        if(specialAffectChanges == true)
-        {
+        if(specialAffectChanges == true) {
             //Dragon healed do normal attack
             //code
 
 
         }
-        else
-        {
+        else {
             //Attack
             //code
 
@@ -63,26 +55,21 @@ public class Dragon extends Enemy implements SpecialAbility
         }
     }
 
-
     @Override
-    public void specialAbility()
-    {
+    public void specialAbility() {
         Probability prob = new Probability();
-        if(prob.getChance(SPECIAL_ATTACK_CHANCE))
-        {
+        if( prob.getChance(SPECIAL_ATTACK_CHANCE) ) {
 
             //10% chance to heal for 10 Health
-            if(prob.getChance(DOUBLE_DAMAGE_CHANCE))
-            {
-                if(getCurrentHealth() != getMaxHealth())
-                {
+            if( prob.getChance(DOUBLE_DAMAGE_CHANCE) ) {
+
+                if( getCurrentHealth() != getMaxHealth() ) {
                     setHealth(getCurrentHealth() + HEAL_DRAGON);
                 }
             }
 
             //Set dragon's attack to double damage on 25% chance
-            else if(prob.getChance(RECOVER_HEALTH_CHANCE))
-            {
+            else if( prob.getChance(RECOVER_HEALTH_CHANCE) ) {
                 setAttack(getDamage() * 2);
                 specialAffectChanges = true;
             }
@@ -90,8 +77,7 @@ public class Dragon extends Enemy implements SpecialAbility
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return DRAGON; 
     }
 }
