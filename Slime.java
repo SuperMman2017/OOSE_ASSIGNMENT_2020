@@ -37,7 +37,7 @@ public class Slime extends Enemy {
     public void attack() {
         
     }
-    
+
     @Override
     public void specialAbility() {
         Probability prob = new Probability();
@@ -49,8 +49,4 @@ public class Slime extends Enemy {
         }
     }
 
-
-    public String toString() {
-        return SLIME;
-    }
 }

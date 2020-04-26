@@ -76,8 +76,4 @@ public class Dragon extends Enemy
         }
     }
 
-    @Override
-    public String toString() {
-        return DRAGON; 
-    }
 }

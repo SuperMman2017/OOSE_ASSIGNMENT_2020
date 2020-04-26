@@ -73,4 +73,12 @@ public abstract class Actor implements IAttackable
         return currentHealth <= MIN_HEALTH;
     }
 
+    @Override
+    public String toString()
+    {
+        String content = "Name" + ": " + name + "\n" +
+                          "Health: " + currentHealth + 
+                          " / " + maxHealth;
+        return content;
+    }
 }

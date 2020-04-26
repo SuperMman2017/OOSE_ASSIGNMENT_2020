@@ -19,7 +19,7 @@ public class clas_tester {
         Enemy slime = new Slime();
         Actor act = (Actor)slime;
 
-        System.out.println(act.toString() + act.getDefense());
+        System.out.println(act.toString() );
     }
 
     public static void testDragon()
@@ -27,7 +27,7 @@ public class clas_tester {
         Enemy dragon = new Dragon();
         Actor act = (Actor)dragon;
         
-        System.out.println(act.toString() + act.getDefense());
+        System.out.println(act.toString() );
     }
 
     public static void testOgre()
@@ -36,7 +36,7 @@ public class clas_tester {
         Actor act = (Actor)ogre;
         Enemy downcast = (Enemy)act;
         downcast.specialAbility();
-        System.out.println(act.toString() + act.getDefense());
+        System.out.println(act.toString() );
     }
 
     public static void testGoblin()
@@ -44,7 +44,7 @@ public class clas_tester {
         Enemy goblin = new Goblin();
         Actor act = (Actor)goblin;
         
-        System.out.println(act.toString() + act.getDefense());
+        System.out.println(act.toString() );
     }
 
     public static void testPlayer()
@@ -53,6 +53,6 @@ public class clas_tester {
         Actor upcast = (Actor)player;
         Player downcast = (Player)upcast;
         downcast.getCurrentGold();
-        System.out.println(downcast.toString() + downcast.getCurrentGold());
+        System.out.println(downcast.toString() );
     }
 }

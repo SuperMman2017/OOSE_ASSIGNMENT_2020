@@ -41,8 +41,4 @@ public class Goblin extends Enemy
         }
     }
 
-    @Override
-    public String toString() {
-        return GOBLIN;
-    }
 }

@@ -48,8 +48,4 @@ public class Ogre extends Enemy {
         }
     }
 
-    @Override
-    public String toString() {
-        return OGRE;
-    }
 }
