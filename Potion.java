@@ -16,5 +16,4 @@ public abstract class Potion extends Item {
     public int getEffect() {
         return effect;
     }
-
 }

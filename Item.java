@@ -13,8 +13,8 @@ public abstract class Item {
         this.cost = cost;
     }
 
-    public void setDescription() {
-
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     public String getName() {
