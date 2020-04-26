@@ -1,4 +1,6 @@
-public class Item {
+public abstract class Item {
+
+    private String description;
     private String name;
     private int cost;
 
@@ -11,6 +13,10 @@ public class Item {
         this.cost = cost;
     }
 
+    public void setDescription() {
+
+    }
+    
     public String getName() {
         return name;
     }
@@ -18,4 +24,5 @@ public class Item {
     public int getCost() {
         return cost;
     }
+
 }
