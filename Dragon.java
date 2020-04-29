@@ -1,4 +1,4 @@
-public class Dragon extends Enemy
+public class Dragon extends DragonAbility
 {
     public static final String DRAGON = "Dragon";
     public static final int DRAGON_MAX_HEALTH = 100;
@@ -31,6 +31,8 @@ public class Dragon extends Enemy
 
     @Override
     public void attack() {
+        //Do dragon ability attack
     }
+
 
 }

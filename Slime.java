@@ -18,14 +18,13 @@ public class Slime extends Enemy {
     //Default consructor
     public Slime() {
         super(SLIME, SLIME_HEALTH,SLIME_HEALTH);
-        rngDefense(SLIME_MIN_DEFENSE, SLIME_MAX_DEFENSE);
         setAttack(SLIME_MIN_DAMAGE);
         setGold(SLIME_GOLD_DROP);
     }
 
     @Override
-    public Actor clone() {
-        Actor slime = new Slime();
+    public Character clone() {
+        Slime slime = new Slime();
         slime.setDefense(getDefense());
         slime.setAttack(getDamage());
         slime.setHealth(getCurrentHealth());
@@ -36,17 +35,6 @@ public class Slime extends Enemy {
     @Override
     public void attack() {
         
-    }
-
-    @Override
-    public void specialAbility() {
-        Probability prob = new Probability();
-        if( prob.getChance(SPECIAL_ATTACK_CHANCE) ) {
-            setAttack(DAMAGE_ON_SPECIAL);
-            attack();
-
-            setAttack(getDamage() - DAMAGE_ON_SPECIAL);
-        }
     }
 
 }
