@@ -8,7 +8,7 @@ public class PotionOfDamage extends Potion{
     }
 
     @Override
-    public void doEffect(Actor enemy) {
-        enemy.loseHealth(getEffect() );
+    public void doEffect(Character enemy) {
+        enemy.setHealth(enemy.getCurrentHealth() - getEffect());
     }
 }

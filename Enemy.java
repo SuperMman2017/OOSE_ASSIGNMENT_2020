@@ -1,41 +1,17 @@
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Character {
 
     private int goldDrop;
 
-    public abstract void specialAbility();
+    public Enemy(String name, int health) {
+        super(name, health);
+    }
     
-    /** Default constructor method for Enemy class
-     *  health parameter is assumed as current and max health
-     */
-    public Enemy(String name,int health) {
-        super(name,health,health);
-        goldDrop = 0;
-    }
-
-    /**constructor method for Enemy class */
-    public Enemy(String name, int health, int maxHealth) {
-        super(name,health,maxHealth);
-        goldDrop = 0;
-    }
-
-    @Override
-    public Actor clone() {
-        return null;
-
-    }
-
-    public void setGold(int goldDrop) {
+    public void setGoldrDrop(int goldDrop) {
         this.goldDrop = goldDrop;
     }
 
-
     public int getGoldDrop() {
         return goldDrop;
-    }
-
-    protected void rngDefense(int minDef,int maxDef) {
-        Probability prob = new Probability();
-        setDefense(prob.getRandomNumberBetween(minDef, maxDef));
     }
 }

@@ -8,7 +8,7 @@ public class PotionOfHealing extends Potion {
     }
 
     @Override
-    public void doEffect(Actor player) {
+    public void doEffect(Character player) {
         player.setHealth(player.getCurrentHealth() + getEffect() ); 
     }
 }

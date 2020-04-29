@@ -12,8 +12,7 @@ public class Ogre extends Enemy {
     
     public static final int OGRE_SPECIAL_CHANCE = 20;
     public Ogre() {
-        super(OGRE, OGRE_MAX_HEALTH,OGRE_MAX_HEALTH);
-        rngDefense(OGRE_MIN_DEF,OGRE_MAX_DEF);
+        super(OGRE, OGRE_MAX_HEALTH);
         setAttack(OGRE_MIN_DAMAGE);
     }
 
@@ -29,23 +28,13 @@ public class Ogre extends Enemy {
 
 
     @Override
-    public Actor clone() {
+    public Character clone() {
         Enemy ogre = new Ogre();
         ogre.setDefense(getDefense());
-        ogre.setAttack(getDamage());
+        ogre.setAttack(getAttack());
         ogre.setHealth(getCurrentHealth());
 
         return ogre;
-    }
-
-    @Override
-    public void specialAbility() {
-        Probability prob = new Probability();
-        if(prob.getChance(OGRE_SPECIAL_CHANCE))
-        {
-            attack();
-            attack();
-        }
     }
 
 }

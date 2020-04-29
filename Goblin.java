@@ -14,7 +14,6 @@ public class Goblin extends Enemy
 
     public Goblin() {
         super(GOBLIN, GOBLIN_HEALTH);
-        rngDefense(GOBLIN_MIN_DEF, GOBLIN_MAX_DEF);
         setAttack(GOBLIN_MIN_ATTACK);
     }
 
@@ -24,21 +23,9 @@ public class Goblin extends Enemy
     }
 
     @Override
-    public Actor clone() {
-        Actor goblin = new Goblin();
-
+    public Character clone() {
+        Goblin goblin = new Goblin();
         return goblin;
-    }
-
-    @Override
-    public void specialAbility() {
-        Probability prob = new Probability();
-        if(prob.getChance(GOBLIN_SPECIAL_CHANCE))
-        {
-            setAttack(getDamage() + INCREASE_ATTACK);
-            attack();
-            setAttack(getDamage() - INCREASE_ATTACK);
-        }
     }
 
 }

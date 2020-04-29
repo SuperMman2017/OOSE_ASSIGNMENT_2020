@@ -7,7 +7,7 @@ public abstract class Potion extends Item {
         super(name, cost);
     }
     
-    public abstract void doEffect(Actor p);
+    public abstract void doEffect(Character p);
 
     public void setEffect(int effect) {
         this.effect = effect;

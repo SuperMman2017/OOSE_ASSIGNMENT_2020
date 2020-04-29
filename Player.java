@@ -1,20 +1,20 @@
-public class Player extends Actor{
+public class Player extends Character{
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
     private int gold;
     
     public Player()
     {
-        super(PLAYER,DEFAULT_PLAYER_HP,DEFAULT_PLAYER_HP);
+        super(PLAYER,DEFAULT_PLAYER_HP);
         setGold(0);
     }
     public Player(String name) {
-        super(name,DEFAULT_PLAYER_HP,DEFAULT_PLAYER_HP);
+        super(name,DEFAULT_PLAYER_HP);
         setGold(0);
     }
 
     @Override
-    public Actor clone() {
+    public Character clone() {
         Player player = new Player(getName());
 
         player.setHealth(getCurrentHealth());
