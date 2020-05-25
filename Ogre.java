@@ -14,27 +14,29 @@ public class Ogre extends Enemy {
     public Ogre() {
         super(OGRE, OGRE_MAX_HEALTH);
         setAttack(OGRE_MIN_DAMAGE);
+        randomiseDefense(OGRE_MIN_DEF, OGRE_MAX_DEF);
     }
 
 
-    @Override
-    public void attack() {
+    @Override public void attack() {
         Probability damageProb = new Probability();
-
         int damage = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
         System.out.println(OGRE + " Attacked dealing " + damage);
         //Do damage
     }
 
 
-    @Override
-    public Character clone() {
+    @Override public Character clone() {
         Enemy ogre = new Ogre();
         ogre.setDefense(getDefense());
         ogre.setAttack(getAttack());
         ogre.setHealth(getCurrentHealth());
 
         return ogre;
+    }
+
+    @Override public void specialAbility() {
+        //Do effect
     }
 
 }

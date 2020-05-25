@@ -17,24 +17,25 @@ public class Slime extends Enemy {
 
     //Default consructor
     public Slime() {
-        super(SLIME, SLIME_HEALTH,SLIME_HEALTH);
+        super(SLIME, SLIME_HEALTH);
         setAttack(SLIME_MIN_DAMAGE);
-        setGold(SLIME_GOLD_DROP);
+        setGoldDrop(SLIME_GOLD_DROP);
     }
 
-    @Override
-    public Character clone() {
+    @Override public Character clone() {
         Slime slime = new Slime();
         slime.setDefense(getDefense());
-        slime.setAttack(getDamage());
+        slime.setAttack(getAttack());
         slime.setHealth(getCurrentHealth());
 
         return slime;
     }
 
-    @Override
-    public void attack() {
+    @Override public void attack() {
         
     }
 
+    @Override public void specialAbility() {
+        //Do effect
+    }
 }

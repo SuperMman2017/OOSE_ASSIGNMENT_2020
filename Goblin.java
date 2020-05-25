@@ -17,15 +17,22 @@ public class Goblin extends Enemy
         setAttack(GOBLIN_MIN_ATTACK);
     }
 
-    @Override
-    public void attack() {
+    @Override public void attack() {
 
     }
 
-    @Override
-    public Character clone() {
+    @Override public Character clone() {
         Goblin goblin = new Goblin();
+        goblin.setAttack(getAttack());
+        goblin.setDefense(getDefense());
+        goblin.setMaxHealth(getMaxHealth());
+        goblin.setHealth(getMaxHealth());
+
         return goblin;
+    }
+
+    @Override public void specialAbility() {
+
     }
 
 }
