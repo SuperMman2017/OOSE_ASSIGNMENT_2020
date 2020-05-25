@@ -1,16 +1,33 @@
 public class Player extends Character{
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
+
+    private Item currentWeapon;
+    private Item currentArmor;
+
+    private PlayerBag bag;
     private int gold;
     
-    public Player()
-    {
+    public Player() {
         super(PLAYER,DEFAULT_PLAYER_HP);
-        setGold(0);
+        currentWeapon = null;
+        currentArmor = null;
+
+        bag = new PlayerBag();
+        setGold(100);
     }
+
     public Player(String name) {
         super(name,DEFAULT_PLAYER_HP);
         setGold(0);
+    }
+
+    public void setArmor(Item armor) {
+        currentArmor = armor;
+    }
+
+    public void setWeapon(Item weapon) {
+        currentWeapon = weapon;
     }
 
     @Override

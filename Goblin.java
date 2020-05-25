@@ -18,7 +18,7 @@ public class Goblin extends Enemy
     }
 
     @Override public void attack() {
-
+        
     }
 
     @Override public Character clone() {
@@ -32,7 +32,7 @@ public class Goblin extends Enemy
     }
 
     @Override public void specialAbility() {
-
+        setAttack(getAttack()+3);
     }
 
 }
