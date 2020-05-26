@@ -36,4 +36,5 @@ public class Dragon extends Enemy
     @Override public void specialAbility() {
         //Do effect
     }
+
 }
