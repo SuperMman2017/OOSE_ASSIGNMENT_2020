@@ -4,7 +4,6 @@ public class Subject {
 
     public Subject(){
         observerList = new LinkedList<>();
-
     }
 
     public void addObserver(Observer o) {
@@ -14,6 +13,7 @@ public class Subject {
     public void removeObserver(Observer o) {
         observerList.remove(o);
     }
+
     public int getState() {
 
     }
