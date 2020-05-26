@@ -6,6 +6,7 @@ public class Player extends Character{
     private Item currentArmor;
 
     private PlayerBag bag;
+
     private int gold;
     
     public Player() {
@@ -42,8 +43,7 @@ public class Player extends Character{
         return player;
     }
 
-    @Override
-    public void attack() {
+    @Override public void attack() {
         
     }
 
@@ -55,8 +55,7 @@ public class Player extends Character{
         this.gold = gold;
     }
 
-    @Override
-    public String toString()
+    @Override public String toString()
     {
         return getName();
     }

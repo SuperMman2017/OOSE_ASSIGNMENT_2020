@@ -1,4 +1,6 @@
-public class Player extends CharacterDecorator{
+package Game.Character;
+
+public class Player extends CharacterDecorator {
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
 
@@ -8,18 +10,13 @@ public class Player extends CharacterDecorator{
     private PlayerBag bag;
     private int gold;
     
-    public Player() {
-        super(this);
+    public Player(GameCharacter charr) {
+        super(charr);
         currentWeapon = null;
         currentArmor = null;
 
         bag = new PlayerBag();
         setGold(100);
-    }
-
-    public Player(String name) {
-        super(name,DEFAULT_PLAYER_HP);
-        setGold(0);
     }
 
     public void setArmor(Item armor) {
@@ -30,20 +27,19 @@ public class Player extends CharacterDecorator{
         currentWeapon = weapon;
     }
 
-    @Override
-    public Character clone() {
-        Player player = new Player(getName());
+    @Override public GameCharacter clone() {
+        Player player = new Player(this);
 
-        player.setHealth(getCurrentHealth());
+        player.setHealth(getHealth());
         player.setMaxHealth(getMaxHealth());
-       
-        player.setGold(this.gold);
+        player.setAttack(getAttack());
+        player.setDefense(getDefense());
+        player.setGold(gold);
 
         return player;
     }
 
-    @Override
-    public void attack() {
+    @Override public void attack() {
         
     }
 
@@ -55,8 +51,7 @@ public class Player extends CharacterDecorator{
         this.gold = gold;
     }
 
-    @Override
-    public String toString()
+    @Override public String toString()
     {
         return getName();
     }

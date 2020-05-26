@@ -1,7 +1,9 @@
+package Game.Character;
+
 public interface Actor {
     public void setHealth(int health);
     public void setMaxHealth(int maxHealth);
-    public void setDefense(int defense):
+    public void setDefense(int defense);
     public void setAttack(int attack);
     public void setName(String name);
 

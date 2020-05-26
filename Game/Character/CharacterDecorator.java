@@ -1,6 +1,8 @@
-public abstract class CharacterDecorator extends Character implements Actor{
-    protected Character character;
-    public CharacterDecorator(Character character) {
+package Game.Character;
+
+public abstract class CharacterDecorator extends GameCharacter implements Actor {
+    protected GameCharacter character;
+    public CharacterDecorator(GameCharacter character) {
         super();
         this.character = character;
     }
@@ -42,15 +44,5 @@ public abstract class CharacterDecorator extends Character implements Actor{
 
     @Override public String getName() {
         return name;
-    }
-
-    @Override public void clone() {
-        Character cloneChar = new CharacterDecorator();
-        cloneChar.setHealth(getHealth());
-        cloneChar.setMaxHealth(getMaxHealth());
-        cloneChar.setAttack(getAttack());
-        cloneChar.setDefense(getDefense())
-        cloneChar.setName(getName());
-        return cloneChar;
     }
 }
