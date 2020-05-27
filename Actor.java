@@ -15,4 +15,6 @@ public interface Actor
     public int getAttack();
 
     public String getName();
+
+    public boolean isAlive();
 }

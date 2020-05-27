@@ -61,4 +61,9 @@ public abstract class Character implements Actor {
     @Override public String getName() {
         return name;
     }
+
+
+    @Override public void isAlive() {
+        return health != 0;
+    }
 }

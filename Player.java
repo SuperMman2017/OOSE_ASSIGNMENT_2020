@@ -55,9 +55,12 @@ public class Player extends Character{
         this.gold = gold;
     }
 
-    @Override
-    public String toString()
+    @Override public String toString()
     {
         return getName();
+    }
+
+    public PlayerBag getBag(){
+        return bag;
     }
 }
