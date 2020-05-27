@@ -1,5 +1,6 @@
+package Game.Character;
 
-public abstract class Character {
+public abstract class GameCharacter {
 
     protected String name;
     protected int health;
@@ -11,6 +12,8 @@ public abstract class Character {
     /** Default constructor method for Character class
      *  health parameter is assumed as current and max health
      */
-    public Character() {
+    public GameCharacter() {
     }
+
+    public abstract GameCharacter clone();
 }

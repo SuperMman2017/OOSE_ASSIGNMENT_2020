@@ -1,20 +1,23 @@
 /*  Player bag class that stores in-game Item objects 
     for player to keep over the course of the game*/
+import java.util.LinkedList;
 public class PlayerBag {
 
     public static final int EMPTY = 0;
+    
     private LinkedList<Item> bag;
     private int maxSize;
+    private int currentSize;
 
     public PlayerBag(int maxSize) {
-        bag = new LinkedList<>();
+        bag = new LinkedList<Item>();
         this.maxSize = maxSize;
-
+        currentSize = 0;
     }
 
     /*Adds Item object to the Item bag*/
     public boolean addItem(Item item) {
-        if(bag.size() < maxSize) {
+        if(maxSize > currentSize) {
             bag.add(item);
             return true;
         }
@@ -40,9 +43,5 @@ public class PlayerBag {
             }
         }
         return false;
-    }
-
-    public boolean isFull() {
-        return bag.size() == maxSize;
     }
 }
