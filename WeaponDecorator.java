@@ -4,4 +4,6 @@ public abstract class WeaponDecorator extends Item {
     public WeaponDecorator(Weapon weapon){ 
         this.weapon = weapon;
     }
+
+    
 }
