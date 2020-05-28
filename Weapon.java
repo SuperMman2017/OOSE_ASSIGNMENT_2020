@@ -1,19 +1,19 @@
 
 public class Weapon extends Item{
 
-    private String damageType;
-    private String weaponType;
+    protected String damageType;
+    protected String weaponType;
 
-    private int minDamage; 
-    private int maxDamage;
+    protected int minDamage; 
+    protected int maxDamage;
 
     public Weapon(String name, int cost) {
-        super(name, cost);
-
+        this.name = name;
+        this.cost = cost;
     }
 
-    public Weapon(String name, int cost, String damageType, String weaponType, int minDamage, int maxDamage) {
-        super(name, cost);
+    /*Setter that sets the damage and type of the weapon*/
+    public void setStat(String damageType, String weaponType, int minDamage, int maxDamage) {
         setDamageType(damageType);
         setWeaponType(weaponType);
         setDamage(minDamage, maxDamage);
