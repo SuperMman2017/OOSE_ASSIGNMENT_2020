@@ -2,8 +2,8 @@ import java.util.LinkedList;
 
 public class BattleSystem {
     //A list of players in the battlefield
-    private Actor player;
-    private LinkedList<Actor> enemies;
+    private Character player;
+    private LinkedList<Character> enemies;
 
     public BattleSystem(Player player) {
         this.player = player;
@@ -16,7 +16,11 @@ public class BattleSystem {
         }
     }
     
-    public void doAttack(Actor player, Actor enemy) {
+    public void doAttack(Character player, Character enemy) {
+        
+    }
+
+    public void enemyAttacks(Character enemy, Character Player){
         
     }
 }

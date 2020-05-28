@@ -29,8 +29,9 @@ public class Dragon extends Enemy
         return dragon;
     }
 
-    @Override public void attack() {
+    @Override public int attack() {
         //Do dragon ability attack
+
     }
 
     @Override public void specialAbility() {
