@@ -64,4 +64,12 @@ public class Player extends Character{
     public PlayerBag getBag(){
         return bag;
     }
+
+    public void addToBag(Item item) {
+        bad.add(item);
+    }
+
+    public void removeFromBag(Item item) {
+        bag.remove(item);
+    }
 }
