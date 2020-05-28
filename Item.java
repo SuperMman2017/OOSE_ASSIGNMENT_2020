@@ -3,7 +3,7 @@ public abstract class Item {
     protected String description;
     protected String name;
     protected int cost;
-    protected Strign itemType;
+    protected String itemType;
 
     public void setType(String itemType) {
         this.itemType = itemType;

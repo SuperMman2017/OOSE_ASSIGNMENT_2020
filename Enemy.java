@@ -2,9 +2,10 @@
 public abstract class Enemy extends Character implements SpecialAbility {
 
     private int goldDrop;
-
+    protected boolean specialActive;
     public Enemy(String name, int health) {
         super(name, health);
+        specialActive = false;
     }
     
     public void setGoldDrop(int goldDrop) {
@@ -20,5 +21,9 @@ public abstract class Enemy extends Character implements SpecialAbility {
     public void randomiseDefense(int minDef, int maxDef) {
         Probability prob = new Probability();
         setDefense(prob.getRandomNumberBetween(minDef, maxDef));
+    }
+
+    public void setSpecial(boolean active) {
+        specialActive = active;
     }
 }

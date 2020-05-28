@@ -31,11 +31,21 @@ public class Slime extends Enemy {
         return slime;
     }
 
-    @Override public void attack() {
-        
+    @Override public int attack() {
+        Probability probAttack = new Probability();
+        int damageDealt = probAttack.getRandomNumberBetween(SLIME_MIN_DAMAGE, SLIME_MAX_DAMAGE);
+        if(specialActive) {
+            setSpecial(false);
+            damageDealt = 0;
+        }
+        return damageDealt;
     }
 
     @Override public void specialAbility() {
         //Do effect
+        Probability probSpecial = new Probability();
+        if(probSpecial.getChance(SPECIAL_ATTACK_CHANCE)) {
+            setSpecial(true);
+        }
     }
 }

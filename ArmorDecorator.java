@@ -4,7 +4,7 @@ public abstract class ArmorDecorator extends ItemDecorator {
         this.armor = armor;
     }
 
-    @Override doEffect(Character c) {
+    @Override public void doEffect(Character c) {
         c.setDefense(armor.getDefense());
     }
 }

@@ -9,6 +9,6 @@ public abstract class WeaponDecorator extends ItemDecorator {
     
     /*Character's gold is decreased, effect will be applied to the weapon object*/
     @Override public void doEffect(Character c) {
-        c.setGold(c.getGold() - this.cost);
+        /** **/
     }
 }

@@ -3,8 +3,8 @@ public class Player extends Character{
     public static final int DEFAULT_PLAYER_HP = 30;
     public static final int MAX_BAG_SIZE = 15;
     
-    private Item currentWeapon;
-    private Item currentArmor;
+    private Weapon currentWeapon;
+    private Armor currentArmor;
 
     private PlayerBag bag;
 
@@ -24,11 +24,11 @@ public class Player extends Character{
         setGold(0);
     }
 
-    public void setArmor(Item armor) {
+    public void setArmor(Armor armor) {
         currentArmor = armor;
     }
 
-    public void setWeapon(Item weapon) {
+    public void setWeapon(Weapon weapon) {
         currentWeapon = weapon;
     }
 
@@ -44,8 +44,8 @@ public class Player extends Character{
         return player;
     }
 
-    @Override public void attack() {
-        
+    @Override public int attack() {
+        return currentWeapon.getPower();
     }
 
     public int getCurrentGold() {

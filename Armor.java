@@ -28,7 +28,7 @@ public class Armor extends Item {
 
     public int getDefense() {
         Probability prob = new Probability();
-        return prob.getNumberBetween(this.minDef, this.maxDef);
+        return prob.getRandomNumberBetween(this.minDef, this.maxDef);
     }
 
     @Override public String toString() {

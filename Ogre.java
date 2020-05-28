@@ -18,10 +18,14 @@ public class Ogre extends Enemy {
     }
 
 
-    @Override public void attack() {
+    @Override public int attack() {
         Probability damageProb = new Probability();
-        int damage = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
-        System.out.println(OGRE + " Attacked dealing " + damage);
+        int damageDealt = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
+        if(specialActive) {
+            setSpecial(false);
+            attack();
+        }
+        return damageDealt;
         //Do damage
     }
 
@@ -37,6 +41,10 @@ public class Ogre extends Enemy {
 
     @Override public void specialAbility() {
         //Do effect
+        Probability probSpecial = new Probability();
+        if(probSpecial.getChance(OGRE_SPECIAL_CHANCE)) {
+            setSpecial(true);
+        }
     }
 
 }

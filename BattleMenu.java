@@ -20,7 +20,7 @@ public class BattleMenu implements IMenu {
     /**/
     public void displayPlayer() {
         System.out.println("Name: " + player.getName() + "\n" +
-                            "Armor: " + player.getArmor);
+                            "Armor: " + player.getArmor());
     }   
 
     public void displayEnemy() {

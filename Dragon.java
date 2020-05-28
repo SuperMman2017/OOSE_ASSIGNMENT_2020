@@ -31,11 +31,31 @@ public class Dragon extends Enemy
 
     @Override public int attack() {
         //Do dragon ability attack
-
+        int damageDealt = 0;
+        Probability attackChance = new Probability();
+        damageDealt = attackChance.getRandomNumberBetween(DRAGON_MIN_DAMAGE, DRAGON_MAX_DAMAGE);
+        if(specialActive){ 
+            /*Dragon does it's special move, it will deal twice the damage */
+            setSpecial(false);
+            damageDealt *= 2;
+        }
+        return damageDealt;
     }
 
     @Override public void specialAbility() {
+
         //Do effect
+        Probability probSpecial = new Probability();
+        if(probSpecial.getChance(SPECIAL_ATTACK_CHANCE)) {
+            if(probSpecial.getChance(RECOVER_HEALTH_CHANCE)) {
+                /*Dragon heals for 10%*/
+                setHealth((int)(getCurrentHealth()+getMaxHealth()*0.1) );
+            }
+            else if(probSpecial.getChance(DOUBLE_DAMAGE_CHANCE)) {
+                /*When the Dragon attacks, it will deal twice the damage */
+                setSpecial(true);
+            }
+        }
     }
 
 }

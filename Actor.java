@@ -2,7 +2,7 @@
     or possible NPC in the game*/
 public interface Actor 
 {
-    public void attack();
+    public int attack();
     
     public void setHealth(int health);
     public void setMaxHealth(int health);

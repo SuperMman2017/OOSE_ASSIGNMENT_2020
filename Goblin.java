@@ -17,8 +17,14 @@ public class Goblin extends Enemy
         setAttack(GOBLIN_MIN_ATTACK);
     }
 
-    @Override public void attack() {
-        
+    @Override public int attack() {
+        Probability probAttack = new Probability();
+        int damageDealt = probAttack.getRandomNumberBetween(GOBLIN_MIN_ATTACK, GOBLIN_MAX_ATTACK);
+        if(specialActive) {
+            setSpecial(false);
+            damageDealt+=3;
+        }
+        return damageDealt;
     }
 
     @Override public Character clone() {
@@ -32,7 +38,10 @@ public class Goblin extends Enemy
     }
 
     @Override public void specialAbility() {
-        setAttack(getAttack()+3);
+        Probability probSpecial = new Probability();
+        if(probSpecial.getChance(GOBLIN_SPECIAL_CHANCE)) {
+            setSpecial(true);
+        }
     }
 
 }
