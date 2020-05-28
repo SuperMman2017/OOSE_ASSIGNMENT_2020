@@ -1,14 +1,13 @@
 
-public class PotionOfDamage extends Potion{
-
+public class PotionOfDamage extends ItemDecorator{
+    protected Potion potion;
     public static final String POTION_DAMAGE_DESCRIPTION = "Inflicts damage towards opponent";
-    public PotionOfDamage(String name, int cost) {
-        super(name, cost);
+    public PotionOfDamage(Potion potion) {
+        this.potion = potion;
         setDescription(POTION_DAMAGE_DESCRIPTION);
     }
 
-    @Override
-    public void doEffect(Character enemy) {
-        enemy.setHealth(enemy.getCurrentHealth() - getEffect());
+    @Override public void doEffect(Character enemy) {
+        enemy.setHealth(enemy.getCurrentHealth() - potion.getEffect());
     }
 }

@@ -1,13 +1,8 @@
 public abstract class Item {
 
-    private String description;
-    private String name;
-    private int cost;
-
-    public Item(String name, int cost) {
-        this.name = name;
-        this.cost = cost;
-    }
+    protected String description;
+    protected String name;
+    protected int cost;
 
     public void setCost(int cost) {
         this.cost = cost;

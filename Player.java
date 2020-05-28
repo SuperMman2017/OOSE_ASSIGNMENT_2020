@@ -1,7 +1,8 @@
 public class Player extends Character{
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
-
+    public static final int MAX_BAG_SIZE = 15;
+    
     private Item currentWeapon;
     private Item currentArmor;
 
@@ -14,7 +15,7 @@ public class Player extends Character{
         currentWeapon = null;
         currentArmor = null;
 
-        bag = new PlayerBag();
+        bag = new PlayerBag(MAX_BAG_SIZE);
         setGold(100);
     }
 

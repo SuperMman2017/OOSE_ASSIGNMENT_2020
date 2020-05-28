@@ -63,7 +63,7 @@ public abstract class Character implements Actor {
     }
 
 
-    @Override public void isAlive() {
+    @Override public boolean isAlive() {
         return health != 0;
     }
 }

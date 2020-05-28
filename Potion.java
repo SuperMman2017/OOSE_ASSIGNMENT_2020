@@ -1,14 +1,13 @@
 
-public abstract class Potion extends Item {
+public class Potion extends Item {
 
     private int effect;
-
+    public static final String HEAL_DESC = "Single use; User recovers health.";
     public Potion(String name,int cost) {
-        super(name, cost);
+        this.name = name;
+        this.cost = cost;
     }
     
-    public abstract void doEffect(Character p);
-
     public void setEffect(int effect) {
         this.effect = effect;
     }

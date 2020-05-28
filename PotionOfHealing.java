@@ -1,14 +1,14 @@
 
-public class PotionOfHealing extends Potion {
-
+public class PotionOfHealing extends ItemDecorator {
+    protected Potion potion;
     public static final String POTION_HEALING_DESCRIPTION = "Heals User by a certain amount";
-    public PotionOfHealing(String name, int cost) {
-        super(name,cost);
+    public PotionOfHealing(Potion potion) {
+        this.potion = potion;
         setDescription(POTION_HEALING_DESCRIPTION);
     }
 
-    @Override
-    public void doEffect(Character player) {
-        player.setHealth(player.getCurrentHealth() + getEffect() ); 
+    @Override public void doEffect(Character player) {
+        player.setHealth(player.getCurrentHealth() + potion.getEffect() ); 
     }
+    
 }
