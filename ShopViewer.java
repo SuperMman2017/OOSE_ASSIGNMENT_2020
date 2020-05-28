@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 public class ShopViewer {
     private Shop shop;
     public ShopViewer(Shop shop) {
@@ -33,12 +34,12 @@ public class ShopViewer {
 
     public void displayBuyDecision(Item item) {
         System.out.println("Do you want to purchase "  + 
-                            item.getName() + " for " item.getCost() + "?"
+                            item.getName() + " for " + item.getCost() + "?"
                             + "Yes (Y/y)\nNo (N/n)?");
     }
 
     public void displayPlayerSell(Player player) {
-        for(Item item : player.getBag()) {
+        for(Item item : player.getPlayerBag().getBag())  {
             System.out.println(item.getName() + ", Cost: " + (int)(item.getCost() * 0.80));
         }
     }

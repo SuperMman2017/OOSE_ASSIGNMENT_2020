@@ -34,6 +34,6 @@ public class Shop {
                 list.add(item);
             }
         }
-        return item;
+        return list;
     }
 }

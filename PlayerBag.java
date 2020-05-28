@@ -35,14 +35,8 @@ public class PlayerBag {
     }
 
     /*Removes an item from the bag*/
-    public boolean removeItem(String name) {
-        for(Item i: bag) {
-            if(i.getName().equals(name)) {
-                bag.remove(i);
-                return true;
-            }
-        }
-        return false;
+    public boolean removeItem(Item item) {
+        return bag.remove(item);
     }
 
     /*Returns a list of items that are of the type specified in the parameter*/

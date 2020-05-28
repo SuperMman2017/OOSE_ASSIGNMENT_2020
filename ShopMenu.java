@@ -1,22 +1,18 @@
 public class ShopMenu {
     private ShopViewer shopView;
 
-    public ShopMenu(){
-        shopView = new ShopViewer;
+    public ShopMenu(Shop shop){
+        shopView = new ShopViewer(shop);
     }
 
-    public void browse(char choice) {
-        System.out.println("You can Filter items by type by pressing (F/f)\n");
-        viewItemType();
-        if(choice == 'f' || choice == 'F') {
-            System.out.println();
-        }
+    public void browse() {
+        shopView.viewItems();
     }
 
     public void playerBuys(Player player, Item item) {
-        if(player.getGold() >= item.getCost() && player.getBag().size() < player.MAX_BAG_SIZE {
-            player.setGold(player.getGold() - item.getCost());
-            player.addItem(item);
+        if(player.getCurrentGold() >= item.getCost() && player.getPlayerBag().getBag().size() < Player.MAX_BAG_SIZE ) {
+            player.setGold(player.getCurrentGold() - item.getCost());
+            player.addToBag(item);
             shopView.itemSold(item);
 
         }
@@ -24,7 +20,7 @@ public class ShopMenu {
 
     public void playerSells(Player player, Item item) {
         player.removeFromBag(item);
-        player.setGold((int)(item.getCost()*0.80) + player.getGold());
+        player.setGold((int) (item.getCost() * 0.80) + player.getCurrentGold());
         shopView.addToShop(item);
     }
 }

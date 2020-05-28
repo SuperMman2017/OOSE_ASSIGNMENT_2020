@@ -14,6 +14,7 @@ public class BattleMenu implements IMenu {
     public void startBattle() {
         while(player.isAlive() && enemy.isAlive()) {
             /*Battle*/
+            displayPlayer();
         }
     }
     
