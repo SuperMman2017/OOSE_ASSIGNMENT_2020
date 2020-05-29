@@ -21,7 +21,7 @@ public class ShopViewer {
     }
 
     /*Displays a list of items in the shop of specific type specified in the parameter */
-    public void viewItemType(String type) {
+    public void viewItemType(char type) {
         LinkedList<Item> specificItems = shop.getItemListType(type);
         for(Item item: specificItems) {
             System.out.println(item.toString());

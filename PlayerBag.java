@@ -40,10 +40,10 @@ public class PlayerBag {
     }
 
     /*Returns a list of items that are of the type specified in the parameter*/
-    public LinkedList<Item> getTypeList(String type) {
+    public LinkedList<Item> getTypeList(char type) {
         LinkedList<Item> typeList = new LinkedList<>();
         for(Item i: bag) {
-            if(i.getItemType().equals(type)){
+            if(i.getItemType() == type){
                 typeList.add(i);
             }
         }

@@ -1,3 +1,4 @@
+import java.io.CharArrayReader;
 import java.util.LinkedList;
 public class Shop {
     private LinkedList<Item> shopItems;
@@ -27,10 +28,10 @@ public class Shop {
     }
 
     /*Retuns a list of item objects that are specific to the type provided by the parameter*/
-    public LinkedList<Item> getItemListType(String type){
+    public LinkedList<Item> getItemListType(char type){
         LinkedList<Item> list = new LinkedList<>();
         for(Item item : shopItems) {
-            if(item.getItemType().equals(type)) {
+            if(item.getItemType() == type) {
                 list.add(item);
             }
         }

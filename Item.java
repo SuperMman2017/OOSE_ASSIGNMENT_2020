@@ -4,9 +4,9 @@ public abstract class Item {
     protected String description;
     protected String name;
     protected int cost;
-    protected String itemType;
+    protected char itemType;
 
-    public void setType(String itemType) {
+    public void setType(char itemType) {
         this.itemType = itemType;
     }
 
@@ -30,7 +30,7 @@ public abstract class Item {
         return cost;
     }
 
-    public String getItemType(){
+    public char getItemType(){
         return this.itemType;
     }
     
