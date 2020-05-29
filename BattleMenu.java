@@ -21,11 +21,11 @@ public class BattleMenu implements IMenu {
     /**/
     public void displayPlayer() {
         System.out.println("Name: " + player.getName() + "\n" +
-                            "Armor: " + player.getArmor());
+                            "Armor: " + player.getCurrentArmor().getName());
     }   
 
     public void displayEnemy() {
-
+        System.out.println(enemy.toString());
     } 
 
     public void logMove(String action) {

@@ -1,7 +1,7 @@
 /*Game class contains the list of observers that observe Menu classes and update it for the view*/
 public class Game extends Subject {
     
-    public GameMenu(){
+    public Game(){
         super();
     }
 
@@ -11,12 +11,14 @@ public class Game extends Subject {
     }
 
     @Override public void removeObserver(Observer o) {
-        observer.remove(o);
+        observers.remove(o);
     }
 
-    @Override notifyObservers() {
+    @Override public void notifyObservers() {
         for(Observer o : observers) {
             o.update();
         }
     }
+
+    
 }

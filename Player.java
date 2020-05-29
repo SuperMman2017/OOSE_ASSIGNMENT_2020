@@ -76,4 +76,12 @@ public class Player extends Character{
     public PlayerBag getPlayerBag() {
         return bag;
     }
+
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public Armor getCurrentArmor() {
+        return currentArmor;
+    }
 }
