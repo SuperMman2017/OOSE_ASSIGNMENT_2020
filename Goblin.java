@@ -43,5 +43,4 @@ public class Goblin extends Enemy
             setSpecial(true);
         }
     }
-
 }

@@ -15,13 +15,14 @@ public abstract class Character implements Actor {
     public Character(String name,int health) {
         this.name = name;
         this.health = health;
+        this.maxHealth = health;
     }
 
     /**constructor method for Character class */
     public Character(String name, int health, int maxHealth) {
         this.name = name;
         this.health = health;
-        this.maxHealth = health;
+        this.maxHealth = maxHealth;
     }
 
     public abstract Character clone();

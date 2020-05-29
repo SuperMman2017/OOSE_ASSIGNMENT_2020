@@ -17,4 +17,5 @@ public interface Actor
     public String getName();
 
     public boolean isAlive();
+    public abstract String toString();
 }
