@@ -1,10 +1,11 @@
 public class EnchantmentPower extends WeaponDecorator{
     public static final String ENCHANTED_POWER = "Enchanted Power-Up ";
     public static final String ENCHANTMENT_DESCRIPTION = " Enchantment Effect: Multiplies damage by ";
-    protected Weapon decoratedWeapon;
+    protected WeaponDecorator decoratedWeapon;
     protected int damageUp;
-    public EnchantmentPower(Weapon weapon) {
+    public EnchantmentPower(WeaponDecorator weapon) {
         this.decoratedWeapon = weapon;
+        decoratedWeapon.timesDecorated++;
     }
 
     @Override public void setEnchantment(int effect) {

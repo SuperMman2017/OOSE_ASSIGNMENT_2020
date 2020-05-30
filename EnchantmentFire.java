@@ -3,10 +3,11 @@ public class EnchantmentFire extends WeaponDecorator{
     public static final String ENCHANTMENT_DESCRIPTION = " Enchantment Effect: Additional Fire damage to enemy dealing ";
     public static final int MIN_DAMAGE = 5;
     public static final int MAX_DAMAGE = 10;
-    protected Weapon decoratedWeapon;
+    protected WeaponDecorator decoratedWeapon;
     protected int damageUp;
-    public EnchantmentFire(Weapon weapon) {
+    public EnchantmentFire(WeaponDecorator weapon) {
         this.decoratedWeapon = weapon;
+        decoratedWeapon.timesDecorated++;
     }
 
     @Override public void setEnchantment(int effect) {
