@@ -10,6 +10,7 @@ public class BattleSystem {
         enemies = new LinkedList<>();
     }
 
+    /**/
     public void turn() {
         for(Actor enemy : enemies) {
             enemy.attack();

@@ -67,4 +67,8 @@ public abstract class Character implements Actor {
     @Override public boolean isAlive() {
         return health != 0;
     }
+
+    public void loseHealth(int damage) {
+        setHealth(getCurrentHealth() - Math.max(0,damage - this.getDefense()) ) ;
+    }
 }

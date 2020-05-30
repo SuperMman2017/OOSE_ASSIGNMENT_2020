@@ -16,8 +16,12 @@ public class ShopViewer {
         shop.addItem(item);
     }
 
-    public void itemSold(Item item) {
-        shop.removeItem(item);
+    public void displaySoldItem(Item item) {
+        System.out.println("You sold " + item.getName() + " for " + (int)(item.getCost()*0.80) + " gold.");
+    }
+
+    public void displayBoughtItem(Item item) {
+        System.out.println("You bought " + item.getName() + " for " + item.getCost() + " gold.");
     }
 
     /*Displays a list of items in the shop of specific type specified in the parameter */

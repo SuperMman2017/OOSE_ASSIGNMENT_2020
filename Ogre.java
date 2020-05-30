@@ -23,7 +23,7 @@ public class Ogre extends Enemy {
         int damageDealt = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
         if(specialActive) {
             setSpecial(false);
-            attack();
+            damageDealt+=attack();
         }
         return damageDealt;
         //Do damage

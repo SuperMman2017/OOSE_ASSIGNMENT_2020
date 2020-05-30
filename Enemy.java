@@ -23,7 +23,7 @@ public abstract class Enemy extends Character implements SpecialAbility {
         setDefense(prob.getRandomNumberBetween(minDef, maxDef));
     }
 
-    public void setSpecial(boolean active) {
+    protected void setSpecial(boolean active) {
         specialActive = active;
     }
 
