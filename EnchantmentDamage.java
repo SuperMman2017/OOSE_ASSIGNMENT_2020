@@ -1,12 +1,10 @@
 public class EnchantmentDamage extends WeaponDecorator{
-    public static final String ENCHANTED_DAMAGE = "Enchantment Damage-Up";
-    public static final String ENCHANMENT_DESCRIPTION = " Enchantment effect: Increased damage power by ";
-    protected WeaponDecorator decoratedWeapon;
+    public static final String ENCHANTED_DAMAGE = " Enchantment Damage-Up ";
+    public static final String ENCHANMENT_DESCRIPTION = " Enchantment effect: Increased damage power by +";
+    protected Weapon decoratedWeapon;
     private int damageUp;
-    public EnchantmentDamage(WeaponDecorator weapon) {
+    public EnchantmentDamage(Weapon weapon) {
         this.decoratedWeapon = weapon;
-        this.timesDecorated++;
-        this.decoratedWeapon.timesDecorated++;
     }
 
     @Override public void setEnchantment(int damageUp) {
@@ -18,7 +16,7 @@ public class EnchantmentDamage extends WeaponDecorator{
     }
 
     @Override public String getName(){ 
-        return new String(ENCHANTED_DAMAGE+this.decoratedWeapon.getName());
+        return ENCHANTED_DAMAGE + decoratedWeapon.getName();
     }
 
     @Override public String getDescription() {

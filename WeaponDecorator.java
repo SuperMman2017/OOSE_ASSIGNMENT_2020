@@ -1,14 +1,16 @@
 /*Decorator for weapons for enchanting weapons*/
-public abstract class WeaponDecorator extends Weapon{
-    /*Applied restrictions to decorations of up to max four enchantments */
-    protected int timesDecorated;
-    public WeaponDecorator(){ 
-        this.timesDecorated = 0;
+public class WeaponDecorator extends Weapon{
+    public WeaponDecorator() {
+
     }
 
-    public int getCounter() {
-        return this.timesDecorated;
+    public WeaponDecorator(String name, int cost){
+        super(name, cost); 
     }
 
-    public abstract void setEnchantment(int effect);
+
+
+    public void setEnchantment(int effect) {
+        /*This parent method does nothing, its subclasses will override this method and set its enchantments */
+    }
 }
