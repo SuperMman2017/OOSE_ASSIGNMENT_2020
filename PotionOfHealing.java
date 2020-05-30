@@ -7,8 +7,11 @@ public class PotionOfHealing extends ItemDecorator {
         setDescription(POTION_HEALING_DESCRIPTION);
     }
 
+    /*  Player health is increased by the potion effect (int)
+        Player's health is clamped to the maxHealth so its currentHealth
+        will not exceed the maxHealth*/
     @Override public void doEffect(Character player) {
-        player.setHealth(player.getCurrentHealth() + potion.getEffect() ); 
+        player.setHealth(Math.min(player.getMaxHealth(), Math.max(player.getCurrentHealth(),player.getCurrentHealth() + potion.getEffect())) );
     }
     
 }

@@ -7,7 +7,10 @@ public class PotionOfDamage extends ItemDecorator{
         setDescription(POTION_DAMAGE_DESCRIPTION);
     }
 
+    /*  Decreases enemies' health by the potion effect,
+        Player/Enemy health is clamped so its currentHealth 
+        does not decrease below 0 */
     @Override public void doEffect(Character enemy) {
-        enemy.setHealth(enemy.getCurrentHealth() - potion.getEffect());
+        enemy.setHealth(Math.max(0,enemy.getCurrentHealth() - potion.getEffect()));
     }
 }

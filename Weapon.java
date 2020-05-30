@@ -1,4 +1,3 @@
-
 public class Weapon extends Item{
 
     protected String damageType;
@@ -7,11 +6,16 @@ public class Weapon extends Item{
     protected int minDamage; 
     protected int maxDamage;
 
+    /*Empty constructor for Decorating weapons */
+    public Weapon() {
+
+    }
+
+    /*Normal constructor for concrete weapons */
     public Weapon(String name, int cost) {
         this.name = name;
         this.cost = cost;
     }
-
     /*Setter that sets the damage and type of the weapon*/
     public void setStat(String damageType, String weaponType, int minDamage, int maxDamage) {
         setDamageType(damageType);

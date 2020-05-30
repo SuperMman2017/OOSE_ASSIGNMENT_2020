@@ -1,14 +1,8 @@
-/*Decorator for weapons for enchanting*/
-public abstract class WeaponDecorator extends ItemDecorator {
-    protected Weapon weapon;
-    protected int cost;
-    public WeaponDecorator(Weapon weapon, int cost){ 
-        this.weapon = weapon;
-        this.cost = cost;
+/*Decorator for weapons for enchanting weapons*/
+public abstract class WeaponDecorator extends Weapon{
+    public WeaponDecorator(){ 
+
     }
-    
-    /*Character's gold is decreased, effect will be applied to the weapon object*/
-    @Override public void doEffect(Character c) {
-        /** **/
-    }
+
+    public abstract void setEnchantment(int effect);
 }
