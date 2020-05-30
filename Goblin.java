@@ -12,6 +12,8 @@ public class Goblin extends Enemy
 
     public static final int INCREASE_ATTACK = 3;
 
+    public static final int GOBLIN_GOLD_DROP = 20;
+    
     public Goblin() {
         super(GOBLIN, GOBLIN_HEALTH);
         setAttack(GOBLIN_MIN_ATTACK);

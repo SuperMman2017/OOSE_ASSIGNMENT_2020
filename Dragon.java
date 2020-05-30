@@ -13,8 +13,8 @@ public class Dragon extends Enemy
     public static final int DRAGON_GOLD = 100;
 
     public static final int SPECIAL_ATTACK_CHANCE = 35;
-    public static final int DOUBLE_DAMAGE_CHANCE = 75;
-    public static final int RECOVER_HEALTH_CHANCE = 90;
+    public static final int DOUBLE_DAMAGE_CHANCE = 25;
+    public static final int RECOVER_HEALTH_CHANCE = 10;
 
     public Dragon() {
         super(DRAGON, DRAGON_MAX_HEALTH);
@@ -43,14 +43,15 @@ public class Dragon extends Enemy
     }
 
     @Override public void specialAbility() {
-
         //Do effect
         Probability probSpecial = new Probability();
         if(probSpecial.getChance(SPECIAL_ATTACK_CHANCE)) {
+            /*10 percent chance to recover health*/ 
             if(probSpecial.getChance(RECOVER_HEALTH_CHANCE)) {
                 /*Dragon heals for 10%*/
                 setHealth((int)(getCurrentHealth()+getMaxHealth()*0.1) );
             }
+            /*25 percent chance to deal double damage */
             else if(probSpecial.getChance(DOUBLE_DAMAGE_CHANCE)) {
                 /*When the Dragon attacks, it will deal twice the damage */
                 setSpecial(true);

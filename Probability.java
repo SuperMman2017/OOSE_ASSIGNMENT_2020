@@ -15,8 +15,8 @@ public class Probability {
         if(prob >= 100) {
             return true;
         }
-        int chance = rand.nextInt();
-        return chance >= prob;
+        int chance = rand.nextInt(101);
+        return chance <= prob;
     }
 
     /**Returns a pseudo-random number between upper bound and lower bound**/
