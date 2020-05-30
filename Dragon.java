@@ -49,7 +49,7 @@ public class Dragon extends Enemy
             /*10 percent chance to recover health*/ 
             if(probSpecial.getChance(RECOVER_HEALTH_CHANCE)) {
                 /*Dragon heals for 10%*/
-                setHealth((int)(getCurrentHealth()+getMaxHealth()*0.1) );
+                setHealth(Math.min(DRAGON_MAX_HEALTH, (int)(getCurrentHealth()+getMaxHealth()*0.1)));
             }
             /*25 percent chance to deal double damage */
             else if(probSpecial.getChance(DOUBLE_DAMAGE_CHANCE)) {

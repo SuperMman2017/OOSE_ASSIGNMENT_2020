@@ -19,7 +19,7 @@ public class BattleController  {
     }   
 
     public void displayEnemy() {
-        System.out.println("Enemy: " + enemy.getName() + "\n" +
+        System.out.println("Enemy: " + enemy.getName() + "\n"
                             );
     } 
 
