@@ -1,15 +1,19 @@
 import java.util.HashMap;
 import java.util.Set;
+
+/*  EnemyFactory class stores all the enemy objects in the game for 
+    store and retrieval of enemy objects to create Enemies in game */
 public class EnemyFactory {
     public static final int DRAGON_SPAWN_CHANCE = 0;
     public static final int SLIME_SPAWN_CHANCE = 50;
     public static final int GOBLIN_SPAWN_CHANCE = 30;
     public static final int OGRE_SPAWN_CHANCE = 20;
-    /*Constant ERROR represents  */
-    public static final int ERROR = -1;
+
     private HashMap<String, Enemy> enemies;
     /*Maps out the chances for each */
     private HashMap<String, Integer> enemyChances;
+
+    
 
     /*Constructor for factory, intializes the 4 enemies and their chances */
     public EnemyFactory() {
@@ -29,21 +33,55 @@ public class EnemyFactory {
         enemyChances.put(Goblin.GOBLIN, GOBLIN_SPAWN_CHANCE);
     }
 
-    public void addEnemyChance(Enemy newEnemy, int chance) {
+    /*  Throws error if the new enemy object exists in the map,
+         otherwise the method adds enemy object name and percentage 
+         chance to the map */
+    public void addEnemyChance(Enemy newEnemy, int chance) throws InvalidEnemyException {
+        if(enemyChances.get(newEnemy.getName()) != null) {
+            throw new InvalidEnemyException("Cannot add Enemy: "+ newEnemy.getName()+" as it already exists.");
+        }
         enemyChances.put(newEnemy.getName(), chance);
     }
 
     /*  Returns boolean true if the enemy provided by the name in the parameter
         was removed successfully, returns false if the name of the enemy isn't listed on the 
         hash map*/
-    public boolean setSpecificEnemy(String name,int newChance) {
-        boolean success = false;
-        if(enemyChances.get(name) != null) {
-            enemyChances.remove(name);
-            enemyChances.put(name, newChance);
-            success = true;
+    public void setSpecificEnemy(String name,int newChance) throws InvalidEnemyException {
+
+        if(enemyChances.get(name) == null) {
+            throw new InvalidEnemyException("Cannot call this method as Enemy: " +name + " does not exist.");
         }
-        return success;
+        enemyChances.remove(name);
+        enemyChances.put(name, newChance);
+    }
+
+    /*Returns a random number */
+    public Character getRandomEnemy() {
+        Enemy enemy = null;
+        Probability prob = new Probability();
+        //Get a random number between 0 and the sum of probability
+        int randomNumber = prob.getRandomNumberBetween(0, sumOfProbabilities());
+        Set<String> keys = enemyChances.keySet();
+        int percent = 0;
+        for(String key : keys) {
+            percent+=enemyChances.get(key);
+            //Does the randon number lie between the lower and upper bound?
+            if(randomNumber <= percent && randomNumber >= percent-enemyChances.get(key)) {
+                enemy = enemies.get(key);
+            }
+        }
+        return enemy.clone();
+    }
+
+    /*  This method calculates the sum of probabilities 
+        in the set of probabilities of existing characters */
+
+    private int sumOfProbabilities() {
+        int sum=0;
+        for(String key : enemyChances.keySet()) {
+            sum+= enemyChances.get(key);
+        }
+        return sum;
     }
 
     /*Changes the spawn rate of all enemies in the map */
@@ -93,6 +131,9 @@ public class EnemyFactory {
         enemies.remove(name);
     }
     
+    /*  This method returns true if the name 
+        provided by the parameter exists as an enemy, 
+        returnsfalse if it doesn't exist */
     public boolean check(String name) {
         return enemies.get(name) != null;
     }
