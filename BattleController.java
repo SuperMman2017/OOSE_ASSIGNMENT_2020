@@ -1,13 +1,13 @@
 import java.util.LinkedList;
 public class BattleController  {
+
+    EnemyFactory enemyFactory;
     private Player player;
-    private Enemy enemy;
     private LinkedList<String> log;
 
 
-    public BattleController(Player player, Enemy enemy) {
+    public BattleController(Player player) {
         this.player = player;
-        this.enemy = enemy;
         log = new LinkedList<>();
     }
 
@@ -18,7 +18,7 @@ public class BattleController  {
                             "Weapon: " + player.getCurrentWeapon().getName());
     }   
 
-    public void displayEnemy() {
+    public void displayEnemy(Enemy enemy) {
         System.out.println("Enemy: " + enemy.getName() + "\n"
                             );
     } 
@@ -44,7 +44,7 @@ public class BattleController  {
         item.doEffect(player);
     }
 
-    public void increasePlayerGold() {
+    public void increasePlayerGold(Enemy enemy) {
         player.setGold(enemy.getGoldDrop());
     }
 }

@@ -27,6 +27,8 @@ public abstract class Enemy extends Character implements SpecialAbility {
         specialActive = active;
     }
 
+    public abstract Character clone();
+
     @Override public String toString() {
         return new String("Enemy: "+getName()+"\nHealth: "+getCurrentHealth() +
                           "/" +getMaxHealth()+"\nDefense: "+getDefense());

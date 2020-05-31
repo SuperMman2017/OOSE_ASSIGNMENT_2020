@@ -4,7 +4,7 @@ public class PotionOfDamage extends ItemDecorator{
     public static final String POTION_DAMAGE_DESCRIPTION = "Inflicts damage towards opponent";
     public PotionOfDamage(Potion potion) {
         this.potion = potion;
-        setDescription(POTION_DAMAGE_DESCRIPTION);
+        setDescription(POTION_DAMAGE_DESCRIPTION + " for " + potion.getEffect());
     }
 
     /*  Decreases enemies' health by the potion effect,

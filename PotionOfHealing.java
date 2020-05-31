@@ -4,7 +4,7 @@ public class PotionOfHealing extends ItemDecorator {
     public static final String POTION_HEALING_DESCRIPTION = "Heals User by a certain amount";
     public PotionOfHealing(Potion potion) {
         this.potion = potion;
-        setDescription(POTION_HEALING_DESCRIPTION);
+        setDescription(POTION_HEALING_DESCRIPTION + " for " + potion.getEffect());
     }
 
     /*  Player health is increased by the potion effect (int)

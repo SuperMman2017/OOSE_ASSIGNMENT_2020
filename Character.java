@@ -68,7 +68,7 @@ public abstract class Character implements Actor {
         return health != 0;
     }
 
-    public void loseHealth(int damage) {
+    /*public void loseHealth(int damage) {
         setHealth(getCurrentHealth() - Math.max(0,damage - this.getDefense()) ) ;
-    }
+    }*/
 }
