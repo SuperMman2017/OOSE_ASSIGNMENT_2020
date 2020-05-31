@@ -1,4 +1,5 @@
 public class EnchantmentFire extends WeaponDecorator{
+    public static final int ENCHANTMENT_COST = 20;
     public static final String ENCHANTED_FIRE = "Enchantment Fire-Power";
     public static final String ENCHANTMENT_DESCRIPTION = " Enchantment Effect: Additional Fire damage to enemy dealing +";
     public static final int MIN_DAMAGE = 5;

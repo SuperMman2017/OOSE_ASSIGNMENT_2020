@@ -1,4 +1,6 @@
 public class EnchantmentDamage extends WeaponDecorator{
+    public static final int ENCHANTMENT_COST = 5;
+    public static final int ENCHANT_COST_2 = 10;
     public static final String ENCHANTED_DAMAGE = " Enchantment Damage-Up ";
     public static final String ENCHANMENT_DESCRIPTION = " Enchantment effect: Increased damage power by +";
     protected Weapon decoratedWeapon;

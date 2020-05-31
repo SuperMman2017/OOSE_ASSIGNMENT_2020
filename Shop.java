@@ -1,10 +1,10 @@
-import java.io.CharArrayReader;
 import java.util.LinkedList;
 public class Shop {
     private LinkedList<Item> shopItems;
-
+    private WeaponEnchanter enchanter;
     public Shop() {
         shopItems = new LinkedList<>();
+        enchanter = new WeaponEnchanter();
     }
 
     /*Adds an item object to the list of items in the shop */
@@ -36,5 +36,9 @@ public class Shop {
             }
         }
         return list;
+    }
+
+    public void enchantDamage(Weapon weapon, int damage) {
+        weapon = enchanter.enchantDamage(weapon, damage);
     }
 }

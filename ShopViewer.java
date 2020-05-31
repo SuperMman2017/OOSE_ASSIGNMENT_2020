@@ -16,6 +16,10 @@ public class ShopViewer {
         shop.addItem(item);
     }
 
+    public void displayShopChoice() {
+        System.out.println("1. Buy\n2. Sell Item\n3. Enchant Weapon");
+    }
+
     public void displaySoldItem(Item item) {
         System.out.println("You sold " + item.getName() + " for " + (int)(item.getCost()*0.80) + " gold.");
     }
