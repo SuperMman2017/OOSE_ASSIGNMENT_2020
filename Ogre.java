@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 
 /*Ogre subclass of Enemy class*/
 public class Ogre extends Enemy {
@@ -14,7 +15,7 @@ public class Ogre extends Enemy {
     public static final int OGRE_SPECIAL_CHANCE = 20;
 
     public static final int OGRE_GOLD_DROP = 40;
-    
+    public static final String OGRE_SPECIAL_ABILITY = "Ogre attacks twice this turn";
     public Ogre() {
         super(OGRE, OGRE_MAX_HEALTH);
         setAttack(OGRE_MIN_DAMAGE);
@@ -24,13 +25,19 @@ public class Ogre extends Enemy {
     /*  When special ability is activated, recurse once to attack twice returns 
         the net damage of both attacks. If special ability is not active it will
         only attack once returning damage dealt of one turn instead of two*/
-    @Override public int attack() {
+    @Override public int attack(LinkedList<String> log) {
+        specialAbility();
         Probability damageProb = new Probability();
         int damageDealt = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
+        int secondAttack = 0;
         if(specialActive) {
+            log.add(new String(getName() +  " uses their special ability. " + OGRE_SPECIAL_ABILITY) );
+            log.add(new String(getName() + " attacks with " + damageDealt + " power."));
+            secondAttack = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
+            damageDealt+=secondAttack;
             setSpecial(false);
-            damageDealt+=attack();
         }
+        log.add(new String(getName() + " attacks with " + (damageDealt-secondAttack) + " power.") );
         return damageDealt;
     }
 

@@ -3,7 +3,7 @@ public class BattleController  {
 
     EnemyFactory enemyFactory;
     private Player player;
-    private LinkedList<String> log;
+    public LinkedList<String> log;
 
 
     public BattleController(Player player) {

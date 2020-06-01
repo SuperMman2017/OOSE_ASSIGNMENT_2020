@@ -32,6 +32,7 @@ public class Slime extends Enemy {
     }
 
     @Override public int attack() {
+        specialAbility();
         Probability probAttack = new Probability();
         int damageDealt = probAttack.getRandomNumberBetween(SLIME_MIN_DAMAGE, SLIME_MAX_DAMAGE);
         if(specialActive) {

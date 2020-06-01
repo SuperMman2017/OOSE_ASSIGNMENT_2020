@@ -85,14 +85,15 @@ public class EnemyFactory {
     }
 
     /*Changes the spawn rate of all enemies in the map */
-    public void changeEnemyChances(int chance) {
+    public void decreaseEnemyChances(int chance) {
         Set<String> chanceSet = enemyChances.keySet();
         for(String key : chanceSet) {
-
+            
             /*  Remove the old spawn rate from the map
                  nd insert the new spawn rate */
+            int oldChance = enemyChances.get(key);
             enemyChances.remove(key);
-            enemyChances.put(key,chance);
+            enemyChances.put(key,Math.max(0, oldChance - chance));
         }
     }
 

@@ -1,8 +1,8 @@
 import java.util.LinkedList;
 public class ShopViewer {
-    private Shop shop;
-    public ShopViewer(Shop shop) {
-        this.shop = shop;
+    private ShopMenu shopController;
+    public ShopViewer(ShopMenu shopController) {
+        this.shopController = shopController;
     }
 
     /*Displays the list of items available in the Shop */
@@ -10,10 +10,6 @@ public class ShopViewer {
         for(Item item : shop.getList()) {
             System.out.println(item.toString());
         }        
-    }
-
-    public void addToShop(Item item) {
-        shop.addItem(item);
     }
 
     public void displayShopChoice() {
@@ -29,7 +25,7 @@ public class ShopViewer {
     }
 
     /*Displays a list of items in the shop of specific type specified in the parameter */
-    public void viewItemType(char type) {
+    public void viewItemType(Shop shop, char type) {
         LinkedList<Item> specificItems = shop.getItemListType(type);
         for(Item item: specificItems) {
             System.out.println(item.toString());

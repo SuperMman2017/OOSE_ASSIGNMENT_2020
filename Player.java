@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Player extends Character{
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
@@ -44,7 +46,7 @@ public class Player extends Character{
         return player;
     }
 
-    @Override public int attack() {
+    @Override public int attack(LinkedList<String> log) {
         return currentWeapon.getPower();
     }
 

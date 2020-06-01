@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 public class Goblin extends Enemy
 {
     public static final String GOBLIN = "Goblin";
@@ -13,19 +14,22 @@ public class Goblin extends Enemy
     public static final int INCREASE_ATTACK = 3;
 
     public static final int GOBLIN_GOLD_DROP = 20;
-    
+
     public Goblin() {
         super(GOBLIN, GOBLIN_HEALTH);
         setAttack(GOBLIN_MIN_ATTACK);
     }
 
-    @Override public int attack() {
+    @Override public int attack(LinkedList<String> log) {
+        specialAbility();
         Probability probAttack = new Probability();
         int damageDealt = probAttack.getRandomNumberBetween(GOBLIN_MIN_ATTACK, GOBLIN_MAX_ATTACK);
         if(specialActive) {
             setSpecial(false);
             damageDealt+=3;
+            log.add(new String(getName() + "use their special ability and will deal +3 damage this turn"));
         }
+        log.add(new String (getName() + " attacks with " + damageDealt + " power"));
         return damageDealt;
     }
 

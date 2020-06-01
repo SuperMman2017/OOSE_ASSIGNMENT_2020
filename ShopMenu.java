@@ -1,13 +1,12 @@
 public class ShopMenu {
-    private ShopViewer shopView;
-    
+    private Shop shop;
     public ShopMenu(Shop shop){
-        shopView = new ShopViewer(shop);
+        this.shop = shop;
     }
 
     /*Displays the items in the shop*/
     public void browse() {
-        shopView.viewItems();
+
     }
 
     /*  This method removes the item from the shop 
@@ -19,7 +18,7 @@ public class ShopMenu {
         if(player.getCurrentGold() >= item.getCost() && player.getPlayerBag().getBag().size() < Player.MAX_BAG_SIZE ) {
             player.setGold(player.getCurrentGold() - item.getCost());
             player.addToBag(item);
-            shopView.displayBoughtItem(item);
+            shop.removeItem(item);
             successfulBuy = true;
         }
         return successfulBuy;
@@ -29,8 +28,15 @@ public class ShopMenu {
     public void playerSells(Player player, Item item) {
         player.removeFromBag(item);
         player.setGold((int) (item.getCost() * 0.80) + player.getCurrentGold());
-        shopView.addToShop(item);
-        shopView.displaySoldItem(item);
+        shop.addItem(item);
     }
 
+
+    /*Displays a list of items in the shop of specific type specified in the parameter */
+    public void viewItemType(char type) {
+        LinkedList<Item> specificItems = shop.getItemListType(type);
+        for(Item item: specificItems) {
+            System.out.println(item.toString());
+        }
+    }
 }
