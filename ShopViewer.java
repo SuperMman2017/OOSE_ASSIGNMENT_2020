@@ -7,7 +7,7 @@ public class ShopViewer {
 
     /*Displays the list of items available in the Shop */
     public void viewItems(){
-        for(Item item : shop.getList()) {
+        for(Item item : shopMenu.getList()) {
             System.out.println(item.toString());
         }        
     }
@@ -25,14 +25,11 @@ public class ShopViewer {
     }
 
     /*Displays a list of items in the shop of specific type specified in the parameter */
-    public void viewItemType(Shop shop, char type) {
-        LinkedList<Item> specificItems = shop.getItemListType(type);
-        for(Item item: specificItems) {
-            System.out.println(item.toString());
-        }
+    public void viewItemType(char type) {
+        shopController.viewItemType(type);
     }
 
-        public void displayCommand() {
+    public void displayCommand() {
         System.out.println("1. Buy Items\n2. Sell Item\n3. Exit");
     }
 
