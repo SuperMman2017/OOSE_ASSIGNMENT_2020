@@ -48,4 +48,8 @@ public class Weapon extends Item{
     public String getWeaponType() {
         return weaponType;
     }
+
+    @Override public void doEffect(Character c) {
+        c.setAttack(getPower());
+    }
 }

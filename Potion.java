@@ -1,5 +1,5 @@
 
-public class Potion extends Item {
+public abstract class Potion extends Item {
 
     /*potionType determines what type of potion it is e.g D = damage, H  = heal */
     private char potionType;

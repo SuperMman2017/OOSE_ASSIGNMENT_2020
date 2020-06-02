@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+/*CLASS NOT IN USE, Use BattleController */
 public class BattleMenu implements IMenu {
     private Player player;
     private Enemy enemy;

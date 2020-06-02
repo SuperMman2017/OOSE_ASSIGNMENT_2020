@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 public class BattleController  {
 
-    EnemyFactory enemyFactory;
+    private Enemy enemy;
     private Player player;
     public LinkedList<String> log;
 
@@ -9,6 +9,15 @@ public class BattleController  {
     public BattleController(Player player) {
         this.player = player;
         log = new LinkedList<>();
+    }
+
+    public void playerAttacks() {
+        int attack = player.attack(log);
+        int healthLost = Math.max(0,attack - enemy.getDefense());
+        enemy.setHealth(enemy.getCurrentHealth() - healthLost);
+        logMove(new String(player.getName() + " attacked with "
+                 + player.getCurrentWeapon().getName() + " with "
+                 + attack +" atk   power.\n " + enemy.getName() +" lost " + healthLost + " health."));
     }
 
     /**/

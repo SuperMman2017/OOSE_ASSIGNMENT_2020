@@ -34,4 +34,5 @@ public abstract class Item {
         return this.itemType;
     }
     
+    public abstract void doEffect(Character player);
 }

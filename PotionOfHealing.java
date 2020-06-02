@@ -18,5 +18,9 @@ public class PotionOfHealing extends ItemDecorator {
                             it's current and new health */ 
                          Math.max(player.getCurrentHealth(),player.getCurrentHealth() + potion.getEffect())) );
     }
-    
+
+    @Override public String getDescription() {
+        return new String(""+potion.getPotionType());
+    }
+
 }

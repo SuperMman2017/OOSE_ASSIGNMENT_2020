@@ -22,27 +22,32 @@ public class BattleViewer {
             displayPlayerChoice(player);
             int choice = playerBattleChoice();
             if(choice == 1) {
-                int attack = player.attack(battleController.log);
-                int healthLost = Math.max(0,attack - enemy.getDefense());
-                enemy.setHealth(enemy.getCurrentHealth() - healthLost);
-                battleController.logMove(new String(player.getName() + " attacked with "
-                                         + player.getCurrentWeapon().getName() + " with "
-                                         + attack +" atk   power.\n " + enemy.getName() +" lost " + healthLost + " health."));
+                battleController.playerAttacks();
             }
             else {
                 System.out.println("Choose an item by number.");
                 System.out.println("Available items are usable as listed: ");
-                
-                LinkedList<Item> usable = player.getBag().getTypeList('P');
-                int count = 1;
-                for(Item item : usable) {
-                    System.out.println( count + ". " + item.getName() + ": " + item.getDescription());
-                    count++;
-                }
+                displayPlayerUsable();
                 System.out.println("Enter 0 to cancel your choice");
                 Item item = chooseItem(player.getBag().getBag().size());
                 if(item != null) {
                     /*item is null when player cancels item selection */
+
+                    if(item.getDescription().equals("H")) {
+                        int oldHealth = player.getCurrentHealth();
+                        item.doEffect(player);
+                        int healthGained = player.getCurrentHealth() - oldHealth;
+                        battleController.logMove(   player.getName() + " used " + item.getName() + "\n" +
+                                                    player.getName() + " regained " + healthGained + " health.");
+                    }
+                    else if (item.getDescription().equals("D")) {
+                        item.doEffect(player);
+                        int attack = player.getAttack();
+                        int healthLost = enemy.getDefense() - attack;
+                        battleController.logMove(new String(player.getName() + " used " + item.getName()) );
+                        enemy.setHealth(Math.max(0, Math.max(0,enemy.getCurrentHealth() - healthLost)) );
+                        battleController.logMove(new String(enemy.getName() + " lost " + healthLost + " health.")  );
+                    }
                 }
                 else {
                     /*Go back to attack or item options */
@@ -53,7 +58,7 @@ public class BattleViewer {
                 String winMessage = new String (player.getName() + " Won!" + "\nYou picked up " + goldEarned + " gold.");
             }
             else {
-                String loseMessage = new String (player.getName() + " lost." + "\nGame Over!"));
+                String loseMessage = new String (player.getName() + " lost." + "\nGame Over!");
             }
         }
 
@@ -69,10 +74,17 @@ public class BattleViewer {
             if(itemChoice == 0 ) {
                 notDone = false;
             }
+            /*Ask for user input again if the player enters incorrect values */
             while(itemChoice > max && itemChoice < 0 ) {
                 System.out.println("This item does not exist, try again ");
-                itemChoice = ui.inputNumber();
+                try {
+                    itemChoice = ui.inputNumber();
+                }
+                    catch(InputMismatchException e ) {
+                }
             }
+
+
             if(itemChoice >= 1 && itemChoice <= max) {
                 System.out.println("You chose " + player.getBag().getBag().get(itemChoice-1).getName()
                                                + " do you want to go with this?" +  "n\n1. Yes\n2. No");
@@ -85,6 +97,9 @@ public class BattleViewer {
                 else {
                     System.out.println("Re-select an item from the following 1-"+max);
                 }
+            }
+            else if(itemChoice == 0) {
+                itemChosen = null;
             }
         }
         return itemChosen;
