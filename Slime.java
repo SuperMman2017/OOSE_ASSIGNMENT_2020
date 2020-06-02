@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 public class Slime extends Enemy {
 
     public static final String SLIME = "Slime";
@@ -14,7 +15,7 @@ public class Slime extends Enemy {
     public static final int SPECIAL_ATTACK_CHANCE = 20;
 
     public static final int SLIME_GOLD_DROP = 10;
-
+    public static final String SLIME_SPECIAL = " Slime hits for 0 damage next turn";
     //Default consructor
     public Slime() {
         super(SLIME, SLIME_HEALTH);
@@ -22,7 +23,7 @@ public class Slime extends Enemy {
         setGoldDrop(SLIME_GOLD_DROP);
     }
 
-    @Override public Character clone() {
+    @Override public Enemy clone() {
         Slime slime = new Slime();
         slime.setDefense(getDefense());
         slime.setAttack(getAttack());
@@ -31,13 +32,14 @@ public class Slime extends Enemy {
         return slime;
     }
 
-    @Override public int attack() {
+    @Override public int attack(LinkedList<String> log) {
         specialAbility();
         Probability probAttack = new Probability();
         int damageDealt = probAttack.getRandomNumberBetween(SLIME_MIN_DAMAGE, SLIME_MAX_DAMAGE);
         if(specialActive) {
             setSpecial(false);
             damageDealt = 0;
+            log.add(new String(this.getName() + " activated its special ability. " + SLIME_SPECIAL));
         }
         return damageDealt;
     }

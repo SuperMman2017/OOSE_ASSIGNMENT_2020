@@ -6,8 +6,10 @@ public class ShopMenu {
     }
 
     /*Displays the items in the shop*/
-    public void browse() {
-
+    public void displayItems() {
+        for(Item item : shop.getList()) {
+            System.out.println(item.getName() + " Description: " + item.getDescription());
+        }
     }
 
     /*  This method removes the item from the shop 

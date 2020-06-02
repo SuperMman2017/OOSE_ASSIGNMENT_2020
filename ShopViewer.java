@@ -5,10 +5,13 @@ public class ShopViewer {
         this.shopController = shopController;
     }
 
-    /*Displays the list of items available in the Shop */
-    public void viewItems(){
-        for(Item item : shopMenu.getList()) {
-            System.out.println(item.toString());
+    public void startShop() {
+        
+        boolean notDone = true;
+        System.out.println("Welcome to the shop!");
+        while(notDone) {
+            displayShopChoice();
+            
         }        
     }
 

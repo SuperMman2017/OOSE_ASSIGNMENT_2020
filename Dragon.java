@@ -26,7 +26,7 @@ public class Dragon extends Enemy
         randomiseDefense(DRAGON_MIN_DEFENSE, DRAGON_MAX_DEFENSE);
     }
 
-    @Override public Character clone() {
+    @Override public Enemy clone() {
         Dragon dragon = new Dragon();
         dragon.setAttack(getAttack());
         dragon.setDefense(getDefense());

@@ -42,7 +42,7 @@ public class Ogre extends Enemy {
     }
 
     /*Returns a Character of this object*/
-    @Override public Character clone() {
+    @Override public Enemy clone() {
         Enemy ogre = new Ogre();
         ogre.setDefense(getDefense());
         ogre.setAttack(getAttack());

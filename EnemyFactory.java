@@ -56,7 +56,7 @@ public class EnemyFactory {
     }
 
     /*Returns a random number */
-    public Character getRandomEnemy() {
+    public Enemy getRandomEnemy() {
         Enemy enemy = null;
         Probability prob = new Probability();
         //Get a random number between 0 and the sum of probability
@@ -108,7 +108,7 @@ public class EnemyFactory {
 
     /*  Returns a clone copy of the enemy mapped by a string, returns null i. This method throws 
         InvalidEnemyException if the enemy name provided in the method parameter doesn't exist in the map*/
-    public Character getEnemy(String name) throws InvalidEnemyException {
+    public Enemy getEnemy(String name) throws InvalidEnemyException {
         Enemy enemy = enemies.get(name);
         if(enemy != null) {
             return enemy.clone();

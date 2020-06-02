@@ -3,7 +3,7 @@ import java.util.LinkedList;
 public class BattleViewer {
     //A list of players in the battlefield
     private Player player;
-    private Character enemy;
+    private Enemy enemy;
     private BattleController battleController;
     private EnemyFactory enemyFactory;
     private UserInterface ui;
@@ -47,6 +47,13 @@ public class BattleViewer {
                 else {
                     /*Go back to attack or item options */
                 }
+            }
+            if(player.isAlive()) {
+                int goldEarned = enemy.getGoldDrop(); 
+                String winMessage = new String (player.getName() + " Won!" + "\nYou picked up " + goldEarned + " gold.");
+            }
+            else {
+                String loseMessage = new String (player.getName() + " lost." + "\nGame Over!"));
             }
         }
 

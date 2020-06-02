@@ -33,7 +33,7 @@ public class Goblin extends Enemy
         return damageDealt;
     }
 
-    @Override public Character clone() {
+    @Override public Enemy clone() {
         Goblin goblin = new Goblin();
         goblin.setAttack(getAttack());
         goblin.setDefense(getDefense());
