@@ -1,5 +1,4 @@
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 public class BattleViewer {
     //A list of players in the battlefield
     private Player player;
@@ -32,33 +31,21 @@ public class BattleViewer {
                 Item item = chooseItem(player.getBag().getBag().size());
                 if(item != null) {
                     /*item is null when player cancels item selection */
-
-                    if(item.getDescription().equals("H")) {
-                        int oldHealth = player.getCurrentHealth();
-                        item.doEffect(player);
-                        int healthGained = player.getCurrentHealth() - oldHealth;
-                        battleController.logMove(   player.getName() + " used " + item.getName() + "\n" +
-                                                    player.getName() + " regained " + healthGained + " health.");
-                    }
-                    else if (item.getDescription().equals("D")) {
-                        item.doEffect(player);
-                        int attack = player.getAttack();
-                        int healthLost = enemy.getDefense() - attack;
-                        battleController.logMove(new String(player.getName() + " used " + item.getName()) );
-                        enemy.setHealth(Math.max(0, Math.max(0,enemy.getCurrentHealth() - healthLost)) );
-                        battleController.logMove(new String(enemy.getName() + " lost " + healthLost + " health.")  );
-                    }
+                    battleController.playerUsePotion(item);
                 }
                 else {
                     /*Go back to attack or item options */
                 }
             }
-            if(player.isAlive()) {
+            if(player.isAlive() && !enemy.isAlive()) {
                 int goldEarned = enemy.getGoldDrop(); 
                 String winMessage = new String (player.getName() + " Won!" + "\nYou picked up " + goldEarned + " gold.");
+                BattleController.logMove(winMessage);
             }
-            else {
+            else if(!player.isAlive()){
                 String loseMessage = new String (player.getName() + " lost." + "\nGame Over!");
+                System.out.println(loseMessage);
+                battleController.logMove(loseMessage);
             }
         }
 
@@ -93,6 +80,7 @@ public class BattleViewer {
                 if(finalChoice == 1) {
                     notDone = false;
                     itemChosen = player.getBag().getBag().get(itemChoice);
+                    player.getBag().getBag().remove(itemChosen);
                 }
                 else {
                     System.out.println("Re-select an item from the following 1-"+max);

@@ -2,6 +2,7 @@ public class EnchantmentPower extends WeaponDecorator{
     public static final int ENCHANTMENT_COST = 10;
     public static final String ENCHANTED_POWER = "Enchanted Power-Up ";
     public static final String ENCHANTMENT_DESCRIPTION = " Enchantment Effect: Multiplies damage by x";
+    public static final double POWER_UP = 1.1;
     protected Weapon decoratedWeapon;
     protected int damageUp;
     public EnchantmentPower(Weapon weapon) {
@@ -13,7 +14,7 @@ public class EnchantmentPower extends WeaponDecorator{
     }
 
     @Override public int getPower() {
-        return (int)(this.decoratedWeapon.getPower()*damageUp);
+        return (int)(this.decoratedWeapon.getPower()*POWER_UP);
     }
 
     @Override public String getName() {

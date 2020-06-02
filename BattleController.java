@@ -20,6 +20,25 @@ public class BattleController  {
                  + attack +" atk   power.\n " + enemy.getName() +" lost " + healthLost + " health."));
     }
 
+    public void playerUsePotion(Item item){
+        if(item.getDescription().equals("H")) {
+            int oldHealth = player.getCurrentHealth();
+            item.doEffect(player);
+            int healthGained = player.getCurrentHealth() - oldHealth;
+            logMove(   player.getName() + " used " + item.getName() + "\n" +
+                                        player.getName() + " regained " + healthGained + " health.");
+        }
+        else if (item.getDescription().equals("D")) {
+            item.doEffect(player);
+            int attack = player.getAttack();
+            int healthLost = enemy.getDefense() - attack;
+            logMove(new String(player.getName() + " used " + item.getName()) );
+            enemy.setHealth(Math.max(0, Math.max(0,enemy.getCurrentHealth() - healthLost)) );
+            logMove(new String(enemy.getName() + " lost " + healthLost + " health.")  );
+        }
+        
+    }
+
     /**/
     public void displayPlayer() {
         System.out.println("Name: " + player.getName() + "\n" +

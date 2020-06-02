@@ -1,7 +1,14 @@
 public class GameViewer {
+    private BattleController battleController;
+    private ShopMenu shopController;
+    private ShopViewer shopViewer;
+    private UserInterface ui;
 
-    public GameViewer() {
-
+    public GameViewer(BattleController battleController, ShopMenu shopController, ShopViewer shopViewer, UserInterface ui) {
+        this.ui = ui;
+        this.battleController = battleController;
+        this.shopController =shopController;
+        this.shopViewer = shopViewer;
     }
 
     public void displayMenu() {

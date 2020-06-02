@@ -36,4 +36,10 @@ public class Armor extends Item {
                 getDescription() + ", " + this.minDef + ", " +
                 this.maxDef + ", " + getCost();
     }
+
+    @Override public void doEffect(Character player) {
+        player.setDefense(this.getDefense());
+    }
+
+    
 }

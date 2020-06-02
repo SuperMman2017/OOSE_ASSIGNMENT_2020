@@ -42,4 +42,28 @@ public class ShopMenu {
             System.out.println(item.toString());
         }
     }
+
+    public Weapon enchantWeapon(Weapon weapon, int choice) throws InvalidChoiceException {
+        /*Enchant weeapon to add addinational damage + 2*/
+        WeaponDecorator decoratedWeapon = new WeaponDecorator();
+        if(choice == 1) {
+            decoratedWeapon = new EnchantmentDamage(weapon);
+            decoratedWeapon.setEnchantment(EnchantmentDamage.ENCHANTMENT_DAMAGE_1);
+        }
+        else if(choice == 2) {
+            decoratedWeapon = new EnchantmentDamage(weapon);
+            decoratedWeapon.setEnchantment(EnchantmentDamage.ENCHANTMENT_DAMAGE_2);
+        }
+        else if(choice == 3) {
+            decoratedWeapon = new EnchantmentPower(weapon);
+        }
+        else if(choice == 4) {
+            decoratedWeapon = new EnchantmentFire(weapon);
+
+        }
+        else {
+            throw new InvalidChoiceException(new String("Error, your selection was not valid."));
+        }
+        return weapon;
+    }
 }

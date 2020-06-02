@@ -1,8 +1,11 @@
 import java.util.LinkedList;
 public class ShopViewer {
+    private Player player;
     private ShopMenu shopController;
-    public ShopViewer(ShopMenu shopController) {
+    private UserInterface ui;
+    public ShopViewer(UserInterface ui, ShopMenu shopController, Player player) {
         this.shopController = shopController;
+        this.ui = ui;
     }
 
     public void startShop() {
@@ -13,6 +16,33 @@ public class ShopViewer {
             displayShopChoice();
             
         }        
+    }
+
+    public void purchaseWeapon() {
+
+    }
+
+    public void purchaseItem() {
+
+    }
+
+    public void purchaseArmor() {
+
+    }
+
+    public void upgradeWeapon() {
+        System.out.println("Choose an item from your inventory that you want to upgrade");
+        LinkedList<Item> playerbag = player.getBag().getBag();
+        int count = 1;
+        for(Item item : playerbag) {
+            if(item.getItemType() == 'W') {
+                System.out.println(count + ". " + item.getName() + "Description: " + item.getDescription());
+            }
+        }
+        int playerChoice = 0;
+        try{ 
+            playerChoice = 
+        }
     }
 
     public void displayShopChoice() {

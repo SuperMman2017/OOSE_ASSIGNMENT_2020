@@ -1,5 +1,5 @@
-import java.util.LinkedList;
-/*CLASS NOT IN USE, Use BattleController */
+/*mport java.util.LinkedList;
+CLASS NOT IN USE, Use BattleController 
 public class BattleMenu implements IMenu {
     private Player player;
     private Enemy enemy;
@@ -14,12 +14,11 @@ public class BattleMenu implements IMenu {
 
     public void startBattle() {
         while(player.isAlive() && enemy.isAlive()) {
-            /*Battle*/
+            /*Battle
             displayPlayer();
         }
     }
     
-    /**/
     public void displayPlayer() {
         System.out.println("Name: " + player.getName() + "\n" +
                             "Armor: " + player.getCurrentArmor().getName());
@@ -33,7 +32,7 @@ public class BattleMenu implements IMenu {
         log.add(action);
     }
 
-    /*Display the list of events/actions that occurred during the battle*/
+    /*Display the list of events/actions that occurred during the battle
     public void displayLog() {
         for(String event : log) {
             System.out.println(event);
@@ -47,4 +46,5 @@ public class BattleMenu implements IMenu {
     public void showPlayerBag(){
 
     }
-}
+
+}*/
