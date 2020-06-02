@@ -4,7 +4,6 @@ public class Player extends Character{
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
     public static final int MAX_BAG_SIZE = 15;
-    
     private Weapon currentWeapon;
     private Armor currentArmor;
 

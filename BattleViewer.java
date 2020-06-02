@@ -18,6 +18,7 @@ public class BattleViewer {
     public void battle() {
         while(player.isAlive() && enemy.isAlive()) {
             battleController.displayPlayer();
+            battleController.displayEnemy(enemy);
             displayPlayerChoice(player);
             int choice = playerBattleChoice();
             if(choice == 1) {
@@ -40,7 +41,7 @@ public class BattleViewer {
             if(player.isAlive() && !enemy.isAlive()) {
                 int goldEarned = enemy.getGoldDrop(); 
                 String winMessage = new String (player.getName() + " Won!" + "\nYou picked up " + goldEarned + " gold.");
-                BattleController.logMove(winMessage);
+                battleController.logMove(winMessage);
             }
             else if(!player.isAlive()){
                 String loseMessage = new String (player.getName() + " lost." + "\nGame Over!");
@@ -70,7 +71,6 @@ public class BattleViewer {
                     catch(InputMismatchException e ) {
                 }
             }
-
 
             if(itemChoice >= 1 && itemChoice <= max) {
                 System.out.println("You chose " + player.getBag().getBag().get(itemChoice-1).getName()

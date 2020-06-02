@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 public class ShopMenu {
+    
     private Shop shop;
     public ShopMenu(Shop shop){
         this.shop = shop;

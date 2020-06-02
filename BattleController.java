@@ -36,19 +36,20 @@ public class BattleController  {
             enemy.setHealth(Math.max(0, Math.max(0,enemy.getCurrentHealth() - healthLost)) );
             logMove(new String(enemy.getName() + " lost " + healthLost + " health.")  );
         }
-        
+        player.removeFromBag(item);
     }
 
     /**/
     public void displayPlayer() {
-        System.out.println("Name: " + player.getName() + "\n" +
-                            "Armor: " + player.getCurrentArmor().getName() +
-                            "Weapon: " + player.getCurrentWeapon().getName());
+        System.out.println( "Name: " + player.getName() + "\n" + "Health: " +
+                            player.getCurrentHealth() + "/"+ player.getMaxHealth()+
+                            "\nArmor: " + player.getCurrentArmor().getName() +
+                            "\nWeapon: " + player.getCurrentWeapon().getName());
     }   
 
     public void displayEnemy(Enemy enemy) {
-        System.out.println("Enemy: " + enemy.getName() + "\n"
-                            );
+        System.out.println("Enemy: " + enemy.getName() + "\n" + "Health: " + 
+                            enemy.getCurrentHealth() + "/" + enemy.getMaxHealth());
     } 
 
     public void logMove(String action) {
@@ -66,11 +67,12 @@ public class BattleController  {
 
     }
 
-    public void usePotion(PotionOfHealing item) {
+    /*Not used anymore */
+    /*public void usePotion(PotionOfHealing item) {
         player.removeFromBag(item);
         /*increases player health based on the potion */
-        item.doEffect(player);
-    }
+     /*   item.doEffect(player);
+    }*/
 
     public void increasePlayerGold(Enemy enemy) {
         player.setGold(enemy.getGoldDrop());
