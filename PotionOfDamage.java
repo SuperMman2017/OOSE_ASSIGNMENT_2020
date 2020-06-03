@@ -14,7 +14,4 @@ public class PotionOfDamage extends ItemDecorator{
         player.setAttack(potion.getEffect());
     }
 
-    @Override public String getDescription(){
-        return new String(potion.getDescription());
-    }
 }
