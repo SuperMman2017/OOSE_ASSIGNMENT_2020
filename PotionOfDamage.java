@@ -12,6 +12,7 @@ public class PotionOfDamage extends ItemDecorator{
         does not decrease below 0 */
     @Override public void doEffect(Character player) {
         player.setAttack(potion.getEffect());
+        System.out.println("player attacks with potion of damage");
     }
 
 }

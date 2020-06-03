@@ -1,4 +1,5 @@
 public class Armor extends Item {
+    public static final char ARMOR = 'A';
     protected String material;
 
     public Armor() {

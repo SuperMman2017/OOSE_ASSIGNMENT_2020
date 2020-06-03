@@ -1,5 +1,5 @@
 public class Weapon extends Item{
-
+    public static final char WEAPON = 'W';
     protected String damageType;
     protected String weaponType;
 
@@ -17,7 +17,9 @@ public class Weapon extends Item{
         this.cost = cost;
     }
     /*Setter that sets the damage and type of the weapon*/
-    public void setStat(String damageType, String weaponType, int minDamage, int maxDamage) {
+    public void setStat(String name, String damageType, String weaponType, int minDamage, int maxDamage) {
+        this.name = name;
+        setType(WEAPON);
         setDamageType(damageType);
         setWeaponType(weaponType);
         setDamage(minDamage, maxDamage);

@@ -41,4 +41,40 @@ public class Shop {
     public void enchantDamage(Weapon weapon, int damage) {
         weapon = enchanter.enchantDamage(weapon, damage);
     }
+
+    public Item cheapestArmor(Player player) {
+        int price = 10000;
+        Item cheapestArmor = null;
+        for(Item item : shopItems) {
+            System.out.println(item.getCost());
+            item.doEffect(player);
+            if(Armor.ARMOR == item.getItemType() && price > item.getCost())  {
+                
+                price = item.getCost();
+                cheapestArmor = item;
+            }
+        }
+        if(cheapestArmor == null) {
+            throw new NullPointerException("Null armor is retrieved from the shop");
+        }
+        return cheapestArmor;
+    }
+
+    public Item cheapestWeapon(Player player) {
+        int price = 10000;
+        Item cheapestWeapon = null;
+        for(Item item : shopItems) {
+            System.out.println(item.getCost());
+            item.doEffect(player);
+            if(Weapon.WEAPON == item.getItemType() && price > item.getCost())  {
+                price = item.getCost();
+                cheapestWeapon = item;
+            }
+        }
+        if(cheapestWeapon == null) {
+            throw new NullPointerException("Null weapon is retrieved from the Shop");
+        }
+        return cheapestWeapon;
+        
+    }
 }
