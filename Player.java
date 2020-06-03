@@ -4,8 +4,8 @@ public class Player extends Character{
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
     public static final int MAX_BAG_SIZE = 15;
-    private Weapon currentWeapon;
-    private Armor currentArmor;
+    private Item currentWeapon;
+    private Item currentArmor;
 
     private PlayerBag bag;
 
@@ -25,11 +25,11 @@ public class Player extends Character{
         setGold(0);
     }
 
-    public void setArmor(Armor armor) {
+    public void setArmor(Item armor) {
         currentArmor = armor;
     }
 
-    public void setWeapon(Weapon weapon) {
+    public void setWeapon(Item weapon) {
         currentWeapon = weapon;
     }
 
@@ -46,7 +46,7 @@ public class Player extends Character{
     }
 
     @Override public int attack(LinkedList<String> log) {
-        return currentWeapon.getPower();
+        return currentWeapon.getEffect();
     }
 
     public int getCurrentGold() {
@@ -78,11 +78,11 @@ public class Player extends Character{
         return bag;
     }
 
-    public Weapon getCurrentWeapon() {
+    public Item getCurrentWeapon() {
         return currentWeapon;
     }
 
-    public Armor getCurrentArmor() {
+    public Item getCurrentArmor() {
         return currentArmor;
     }
 }

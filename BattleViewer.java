@@ -6,6 +6,7 @@ public class BattleViewer {
     private BattleController battleController;
     private EnemyFactory enemyFactory;
     private UserInterface ui;
+    
     public BattleViewer(UserInterface ui, Player player) {
         this.ui = ui;
         battleController = new BattleController(player);

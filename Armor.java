@@ -1,11 +1,16 @@
 public class Armor extends Item {
     protected String material;
+
+    public Armor() {
+
+    }
+
     public Armor(String name, String material, int minDef, int maxDef, int cost) {
         this.material = material;
         this.minEffect = minDef;
         this.maxEffect = maxDef;
         this.name = name;
-        setDescription("");
+        setDescription(material);
         setCost(cost);
     }
 
@@ -38,5 +43,4 @@ public class Armor extends Item {
         player.setDefense(this.getDefense());
     }
 
-    
 }
