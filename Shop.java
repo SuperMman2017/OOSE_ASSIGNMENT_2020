@@ -42,14 +42,12 @@ public class Shop {
         weapon = enchanter.enchantDamage(weapon, damage);
     }
 
-    public Item cheapestArmor(Player player) {
+    public Item cheapestArmor() {
         int price = 10000;
         Item cheapestArmor = null;
         for(Item item : shopItems) {
-            System.out.println(item.getCost());
-            item.doEffect(player);
-            if(Armor.ARMOR == item.getItemType() && price > item.getCost())  {
-                
+            System.out.println(item.getName() + " " + item.getItemType());
+            if(Armor.ARMOR == item.getItemType() && item.getCost() < price)  {
                 price = item.getCost();
                 cheapestArmor = item;
             }
@@ -60,13 +58,11 @@ public class Shop {
         return cheapestArmor;
     }
 
-    public Item cheapestWeapon(Player player) {
+    public Item cheapestWeapon() {
         int price = 10000;
         Item cheapestWeapon = null;
         for(Item item : shopItems) {
-            System.out.println(item.getCost());
-            item.doEffect(player);
-            if(Weapon.WEAPON == item.getItemType() && price > item.getCost())  {
+            if(Weapon.WEAPON == item.getItemType() && item.getCost() < price)  {
                 price = item.getCost();
                 cheapestWeapon = item;
             }

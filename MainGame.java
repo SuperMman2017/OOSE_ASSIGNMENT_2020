@@ -34,8 +34,9 @@ public class MainGame {
         catch(NullPointerException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Player weapon is " + player.getCurrentWeapon().getName() + 
+         System.out.println("Player weapon is " + player.getCurrentWeapon().getName() + 
                             " \nCurrent armor: " + player.getCurrentArmor().getName());
+
     }
 
     /*Sets player's weapon and armor to the cheapest items from the shop */
@@ -43,8 +44,8 @@ public class MainGame {
         if(shop.getList().size() == 0 ) {
             throw new NullPointerException("Shop is empty, no items have loaded in the shop");
         }
-        Item cheapestArmor = shop.cheapestArmor(player);
-        Item cheapestWeapon = shop.cheapestWeapon(player);
+        Item cheapestArmor = shop.cheapestArmor();
+        Item cheapestWeapon = shop.cheapestWeapon();
         if(cheapestArmor != null && cheapestWeapon != null) {
             player.setArmor(cheapestArmor);
             player.setWeapon(cheapestWeapon);
@@ -107,6 +108,7 @@ public class MainGame {
                     item = ItemFactory.createPotion(tokens[1].trim(),tokens[5].trim().charAt(0),cost,minEffect,maxEffect);
                     item.setCost(cost);
                     item.setName(tokens[1].trim());
+                    item.setEffect(minEffect, maxEffect);
                 }
 
                 else if (tokens[0].charAt(0) == ARMOR){
@@ -119,6 +121,7 @@ public class MainGame {
                             parseError = 1;
                         }
                         armor.setItem(name, cost, material, minEffect, maxEffect);
+                        armor.setType(Armor.ARMOR);
                         item = armor;
                 }
             }
