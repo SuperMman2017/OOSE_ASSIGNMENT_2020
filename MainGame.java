@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.LinkedList;
 
 public class MainGame {
@@ -13,13 +14,13 @@ public class MainGame {
     public static final char POTION_HEAL = 'H';
     public static final char POTION_DAMAGE = 'D';
     private static Loader loader = new TextFileLoader(); 
-
+    private static ItemFactory itemFactory = new ItemFactory();
     public static void main(String []args) {
         Shop shop = new Shop();
         Player player = new Player();
-        ItemFactory itemFactory = new ItemFactory(); 
+
         try {
-            loadItems(shop, loader.Load(shopFile));
+            loadItems(itemFactory, shop, loader.Load(shopFile));
         }
         catch(InvalidFileException e) {
             System.out.println(e.getMessage());
@@ -44,13 +45,26 @@ public class MainGame {
             /*6 arguments for potions or armor*/
             else if(tokens.length == ITEM_ARG) {
                 Item item = null;
-                if(tokens[5].toUpperCase().charAt(0) == POTION_HEAL) {
-                    item = new Potion(tokens[1], );
+                if(tokens[0].toUpperCase().charAt(0) == POTION) {
+                    if(tokens[5].toUpperCase().charAt(0) == POTION_HEAL) {
+                        try{
+                            int cost = Integer.valueOf(tokens[1]);
+                            int minEffect = Integer.valueOf(tokens[2]);
+                            int maxEffect = Integer.valueOf(tokens[3]);
+                            item = ItemFactory.createPotion(tokens[1],POTION_HEAL,cost,minEffect,maxEffect);
+                        }
+                        catch(NumberFormatException e) {
+                            System.out.println(e.getMessage() + "Failed to load file: " + shopFile + ". Fix the file to solve error");
+                        }
+
+
+                    }
                 }
                 else if (tokens[0].charAt(0) == ARMOR){
                     Armor armor = new Armor();
                     item = armor;
                 }
+
                 if(item != null) {
                     shop.addItem(item);
                 }

@@ -1,8 +1,9 @@
 
-public abstract class PotionDecorator extends Potion{
+/*Class not in use */
+/*public abstract class PotionDecorator extends Potion{
     
-    public PotionDecorator(String name, int cost, char type) {
-        super(name, cost, type);
+    public PotionDecorator(String name, int cost) {
+        super(name, cost);
     }
 
-}
+}*/
