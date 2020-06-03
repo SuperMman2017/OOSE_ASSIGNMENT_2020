@@ -19,15 +19,7 @@ public class ShopViewer {
         }        
     }
 
-    public void purchaseWeapon() {
-
-    }
-
-    public void purchaseItem() {
-
-    }
-
-    public void purchaseArmor() {
+    public void buyItem(){ 
 
     }
 
@@ -93,7 +85,7 @@ public class ShopViewer {
             /*The user may only be able to choose a number selection between 1-4 or 0 as an exit */
             if(  enchantmentChoice < WeaponEnchanter.ENCHANT_MIN &&
                  enchantmentChoice > WeaponEnchanter.ENCHANT_MAX && enchantmentChoice != 0) {
-                enchantmentChoice = -1;
+                 enchantmentChoice = -1;
                 System.out.println("Your selection is invalid try again or enter 0 to go back");
             }
         }

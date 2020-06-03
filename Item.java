@@ -5,7 +5,7 @@ public abstract class Item {
     protected String name;
     protected int cost;
     protected char itemType;
-
+    protected
     public void setType(char itemType) {
         this.itemType = itemType;
     }
