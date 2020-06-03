@@ -1,40 +1,37 @@
 public class Armor extends Item {
     protected String material;
-    protected int minDef;
-    protected int maxDef;
     public Armor(String name, String material, int minDef, int maxDef, int cost) {
         this.material = material;
-        this.minDef = minDef;
-        this.maxDef = maxDef;
+        this.minEffect = minDef;
+        this.maxEffect = maxDef;
         this.name = name;
         setDescription("");
         setCost(cost);
     }
 
     public void setMinDef(int minDef) {
-        this.minDef = minDef;
+        this.minEffect = minDef;
     }
 
     public void setMaxDef(int maxDef) {
-        this.maxDef = maxDef;
+        this.maxEffect = maxDef;
     }
 
     public int getMaxDef() {
-        return this.maxDef;
+        return this.maxEffect;
     }
     public int getMinDefense() {
-        return this.minDef;
+        return this.minEffect;
     }
 
     public int getDefense() {
-        Probability prob = new Probability();
-        return prob.getRandomNumberBetween(this.minDef, this.maxDef);
+        return getEffect();
     }
 
     @Override public String toString() {
         return  getName() + ", "  + this.material + ", " +
-                getDescription() + ", " + this.minDef + ", " +
-                this.maxDef + ", " + getCost();
+                getDescription() + ", " + this.minEffect + ", " +
+                this.maxEffect + ", " + getCost();
     }
 
     @Override public void doEffect(Character player) {

@@ -5,7 +5,22 @@ public abstract class Item {
     protected String name;
     protected int cost;
     protected char itemType;
-    protected
+    protected int minEffect;
+    protected int maxEffect;
+
+    public void setItem(String name, int cost, String description, int minEffect ,int maxEffect) {
+        this.name = name;
+        this.description = description;
+        this.cost = cost;
+        this.minEffect = minEffect;
+        this.maxEffect = maxEffect;
+    }
+    
+    public void setEffect(int minEffect, int maxEffect)  {
+        this.minEffect = minEffect;
+        this.maxEffect = maxEffect;
+    }
+
     public void setType(char itemType) {
         this.itemType = itemType;
     }
@@ -22,6 +37,9 @@ public abstract class Item {
         return name;
     }
 
+    /*  Used to identify types of potion in potion decorator, 
+        as for other objects inheriting item, it will be used 
+        for normal description */
     public String getDescription() {
         return description;
     }
@@ -32,6 +50,11 @@ public abstract class Item {
 
     public char getItemType(){
         return this.itemType;
+    }
+
+    public int getEffect() {
+        Probability prob = new Probability();
+        return prob.getRandomNumberBetween(minEffect, maxEffect);
     }
     
     public abstract void doEffect(Character player);

@@ -37,8 +37,7 @@ public class Weapon extends Item{
     }
 
     public int getPower() {
-        Probability prob = new Probability();
-        return prob.getRandomNumberBetween(minDamage, maxDamage);
+        return getEffect();
     }
 
     public String getDamageType() {

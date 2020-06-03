@@ -15,7 +15,7 @@ public class PotionOfDamage extends ItemDecorator{
     }
 
     @Override public String getDescription(){
-        return new String(""+potion.getPotionType());
+        return new String(""+potion.getDescription());
     }
     
 }
