@@ -23,13 +23,15 @@ public class UserInterface {
         return new String(input.next());
     }
 
+    /*Return -1 if the input is not an integer number */
     public int inputNumber() {
         int number = 0;
         try {
-            number = input.nextInt();
+            String in = input.next();
+            number = Integer.parseInt(in);
         }
-        catch(InputMismatchException e) {
-            e.printStackTrace();
+        catch(NumberFormatException e) {
+            number = -1;
         }
         return number;
     }

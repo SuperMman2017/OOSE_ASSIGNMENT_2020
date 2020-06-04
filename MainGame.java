@@ -29,11 +29,13 @@ public class MainGame {
         battleController = new BattleController(player);
         battleViewer = new BattleViewer(ui, player);
         shopViewer = new ShopViewer(ui, shopController, player);
-        game = new GameViewer(battleViewer,shopViewer,ui);
+        game = new GameViewer(battleViewer,shopViewer,ui, player);
         /*Try load items from a file */
         try {
             loadItems(itemFactory, shop, loader.Load(shopFile));
             loadPlayer(shop, player);
+            System.out.println("Player is equipped with " + player.getCurrentArmor().getName());
+            System.out.println("player is equipped with " + player.getCurrentWeapon().getName());
         }
         catch(InvalidFileException e) {
             System.out.println("Failed to load items ");
@@ -57,6 +59,8 @@ public class MainGame {
         Item cheapestArmor = shop.cheapestArmor();
         Item cheapestWeapon = shop.cheapestWeapon();
         if(cheapestArmor != null && cheapestWeapon != null) {
+            player.addToBag(cheapestArmor);
+            player.addToBag(cheapestWeapon);
             player.setArmor(cheapestArmor);
             player.setWeapon(cheapestWeapon);
         }

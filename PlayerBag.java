@@ -12,12 +12,11 @@ public class PlayerBag {
     public PlayerBag(int maxSize) {
         bag = new LinkedList<Item>();
         this.maxSize = maxSize;
-        currentSize = 0;
     }
 
     /*Adds Item object to the Item bag*/
     public boolean addItem(Item item) {
-        if(maxSize > currentSize) {
+        if(maxSize >= bag.size()) {
             bag.add(item);
             return true;
         }

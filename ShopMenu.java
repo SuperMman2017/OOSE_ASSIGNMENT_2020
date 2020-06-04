@@ -40,6 +40,7 @@ public class ShopMenu {
     public void viewItemType(char type) {
         LinkedList<Item> specificItems = shop.getItemListType(type);
         for(Item item: specificItems) {
+            
             System.out.println(item.toString());
         }
     }
