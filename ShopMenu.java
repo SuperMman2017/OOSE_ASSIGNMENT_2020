@@ -8,8 +8,29 @@ public class ShopMenu {
 
     /*Displays the items in the shop*/
     public void displayItems() {
+        int counter = 1;
         for(Item item : shop.getList()) {
-            System.out.println(item.getName() + " Description: " + item.getDescription());
+            if(item.getItemType() != Potion.POTION) {
+                if(item.getItemType() == Weapon.WEAPON) {
+                    System.out.println( counter + ". " + item.getName() + " Description: " + item.getDescription() + ", COST: " + item.getCost()
+                                        + "\nPotential Damage " + item.getMinEffect() + "-"+ item.getMaxEffect());
+                }
+                else if (item.getItemType() == Armor.ARMOR) {
+                    System.out.println(counter + ". " + item.getName() + " Description " + item.getDescription() + ", COST:" + item.getCost() +
+                                        "\nPotential Defense " + item.getMinEffect() + "-" + item.getMaxEffect());
+                }                
+            }
+            else {
+                if(item.getDescription().charAt(0) == PotionOfHealing.POTION_OF_HEALING) {
+                    System.out.println( counter + ". " + item.getName() + " Description: " + PotionOfHealing.POTION_HEALING_DESCRIPTION + ", COST: " + item.getCost() 
+                                         + "\nPotential Effect " + item.getMinEffect() + "-" + item.getMaxEffect());
+                }
+                else if(item.getDescription().charAt(0) == PotionOfDamage.POTION_OF_DAMAGE) {
+                    System.out.println( counter + ". " + item.getName() + " Description: " + PotionOfDamage.POTION_DAMAGE_DESCRIPTION + ", COST: " + item.getCost() 
+                                         + "\nPotential Effect " + item.getMinEffect() + "-" + item.getMaxEffect());
+                }
+            }
+            counter++;
         }
     }
 
@@ -22,7 +43,6 @@ public class ShopMenu {
         if(player.getCurrentGold() >= item.getCost() && player.getPlayerBag().getBag().size() < Player.MAX_BAG_SIZE ) {
             player.setGold(player.getCurrentGold() - item.getCost());
             player.addToBag(item);
-            shop.removeItem(item);
             successfulBuy = true;
         }
         return successfulBuy;
@@ -31,7 +51,7 @@ public class ShopMenu {
     /*Thie method removes an item from the player bag and displays the player decision*/
     public void playerSells(Player player, Item item) {
         player.removeFromBag(item);
-        player.setGold((int) (item.getCost() * 0.80) + player.getCurrentGold());
+        player.setGold((int)(item.getCost() * Shop.SELLING_PRICE) + player.getCurrentGold());
         shop.addItem(item);
     }
 
@@ -45,7 +65,7 @@ public class ShopMenu {
         }
     }
 
-    public Weapon enchantWeapon(Weapon weapon, int choice) throws InvalidChoiceException {
+    public Item enchantWeapon(Item weapon, int choice) throws InvalidChoiceException {
         /*Enchant weeapon to add addinational damage + 2*/
         WeaponDecorator decoratedWeapon = new WeaponDecorator();
         if(choice == 1) {
@@ -66,6 +86,15 @@ public class ShopMenu {
         else {
             throw new InvalidChoiceException(new String("Error, your selection was not valid."));
         }
-        return weapon;
+        Item newItem = decoratedWeapon;
+        return newItem;
+    }
+
+    public int getStock() {
+        return shop.getList().size();
+    }
+
+    public LinkedList<Item> itemStock() {
+        return shop.getList();
     }
 }

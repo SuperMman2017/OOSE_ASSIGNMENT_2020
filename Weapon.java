@@ -53,4 +53,8 @@ public class Weapon extends Item{
     @Override public void doEffect(Character c) {
         c.setAttack(getPower());
     }
+
+    @Override public String getDescription() {
+        return new String(this.name + " is a " + this.weaponType + " and deals a damage type of " + damageType);
+    }
 }

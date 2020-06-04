@@ -47,6 +47,9 @@ public class MainGame {
 
         /*Start the game if the file successfully loaded */
         if(fileLoaded) {
+            if(player == null) {
+                System.out.println("Error, player is null");
+            }
             game.startGame();
         }
     }
@@ -92,6 +95,7 @@ public class MainGame {
                             parseError = 1;
                         }
                         weapon.setStat(name, damageType ,weaponType, minDamage, maxDamage);
+                        weapon.setDamage(minDamage, maxDamage);
                         weapon.setCost(cost);
                         item = weapon;
                     }
@@ -134,6 +138,7 @@ public class MainGame {
                         if(name.equals("") || material.equals("")) {
                             parseError = 1;
                         }
+
                         armor.setItem(name, cost, material, minEffect, maxEffect);
                         armor.setType(Armor.ARMOR);
                         item = armor;

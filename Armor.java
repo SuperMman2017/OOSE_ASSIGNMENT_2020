@@ -44,4 +44,8 @@ public class Armor extends Item {
         player.setDefense(this.getDefense());
     }
 
+    @Override public String getDescription(){
+        return new String(this.getName() + " is made from " +this.description);
+    }
+
 }

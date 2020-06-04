@@ -1,5 +1,6 @@
 
 public class PotionOfDamage extends ItemDecorator{
+    public static final char POTION_OF_DAMAGE = 'D';
     protected Item potion;
     public static final String POTION_DAMAGE_DESCRIPTION = "Inflicts damage towards opponent";
     public PotionOfDamage(Item potion) {

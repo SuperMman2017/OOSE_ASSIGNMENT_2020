@@ -4,7 +4,7 @@ public class GameViewer {
     public static final int MIN_CHOICE_VALUE = 1;
     public static final int MAX_CHOICE_VALUE = 6;
     private BattleViewer battleViewer;
-    private ShopMenu shopController;
+    //private ShopMenu shopController;
     private ShopViewer shopViewer;
     private UserInterface ui;
     private Player player;
@@ -81,7 +81,7 @@ public class GameViewer {
             int chosenWeapon = 0;
             boolean notExit = true;
             while(notExit) {
-                System.out.println("Choose a weapon");
+                System.out.println("Choose a weapon or Enter 0 to quit");
                 int counter = 1;
                 for(Item item : weaponlist) {
                     System.out.println( counter + ". " + item.getName() + item.getDescription() 
@@ -130,14 +130,14 @@ public class GameViewer {
 public void changeArmor() {
         LinkedList<Item> armorlist = player.getPlayerBag().getTypeList(Armor.ARMOR);
         if(armorlist.size() == 0) {
-            System.out.println("You bag does not have any armor");
+            System.out.println("Your bag does not have any armor");
         }
         else {
             
             int chosenArmor = 0;
             boolean notExit = true;
             while(notExit) {
-                System.out.println("Choose an armor");
+                System.out.println("Choose an armor or press 0 to Quit");
                 int counter = 1;
                 for(Item item : armorlist) {
                 System.out.println( counter + ". " + item.getName() + item.getDescription() 
@@ -182,6 +182,7 @@ public void changeArmor() {
     public void changeName() {
         boolean noExit = true;
         while(noExit) {
+            System.out.println("Your current name is: " + player.getName());
             System.out.print("Enter Q to cancel your choice.\nEnter your name: ");
             String name = ui.inputString();
             boolean finalChoice = true;
@@ -197,6 +198,8 @@ public void changeArmor() {
                         decision = ui.inputCharacter();
                         if(decision == 'Y' || decision == 'y') {
                             player.setName(name);
+                            noExit = false;
+                            finalChoice = false;
                         }
                         else {
                             finalChoice = false;
@@ -213,7 +216,7 @@ public void changeArmor() {
 
     public void displayMenu() {
         System.out.println("1. Go to Shop\n2. Choose Character name\n3. Choose Weapon" +
-                            "\n4 Choose armour\n5. Start Battle\n6. Exit Game");
+                            "\n4. Choose armour\n5. Start Battle\n6. Exit Game");
     }
 
     public void finalPromptExit() {

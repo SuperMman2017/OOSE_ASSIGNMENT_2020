@@ -8,6 +8,7 @@ public class ShopViewer {
     public ShopViewer(UserInterface ui, ShopMenu shopController, Player player) {
         this.shopController = shopController;
         this.ui = ui;
+        this.player = player;
     }
 
     public void startShop() {
@@ -38,7 +39,7 @@ public class ShopViewer {
                             break;
 
                         case 2: 
-
+                        sellItem();
                             break;
 
                         case 3:
@@ -55,56 +56,146 @@ public class ShopViewer {
     }
 
     public void buyItem(){ 
+        System.out.println("Select from items listed below");
+        boolean notDone = true;
+        while(notDone) {
+            int buyChoice = -1;
+            shopController.displayItems();
+            System.out.println("Enter 0 if you wish to go back.");
+            try {
+                buyChoice = ui.inputNumber();
+            }
+            catch(NumberFormatException e) {
+                buyChoice = -1;
+            }
+            buyChoice = buyChoice == 0 || (buyChoice >= GameViewer.MIN_CHOICE_VALUE &&
+                        buyChoice <= shopController.getStock()) ? buyChoice : -1;
+            if(buyChoice == -1) {
+                System.out.println("Your input was invalid, try again.");
+            }
+            /*Check  */
+            else if(    buyChoice >= GameViewer.MIN_CHOICE_VALUE && 
+                        buyChoice <= shopController.getStock()) {
+                    Item item = shopController.itemStock().get(buyChoice - 1);
+                    System.out.println("Are you sure you want to buy " + item.getName() + "?\n Enter Yes or No(Y/y/N/n)");
+                    char confirm = ui.inputCharacter();
+                    if(confirm == 'Y' || confirm =='y') {
+                        boolean canbuy = shopController.playerBuys(player, item);
+                        if(canbuy) {
+                            notDone = false;
+                            System.out.println("You successfully bought " + item.getName());
+                        }
+                        else {
+                            System.out.println("You do not have enough to buy " + item.getName());
+                        }
 
+                    }
+                   
+                }
+
+            else if(buyChoice == 0) {
+                notDone = false;
+            }
+        }
+    }
+
+    public void sellItem() {
+        System.out.println("These are the items in your bag.");
+        displayPlayerSell(player);
+        boolean noExit = true;
+        int sellChoice = -1;
+        while(noExit) {
+            System.out.println("Enter 0 if you wish to exit.");
+            try {
+                sellChoice = ui.inputNumber();
+            }
+            catch(NumberFormatException e) {
+                sellChoice = -1;
+            }
+            sellChoice = sellChoice == 0 || (sellChoice >= GameViewer.MIN_CHOICE_VALUE && 
+                         sellChoice <= player.getPlayerBag().getBag().size()) ? sellChoice : -1;
+            if(sellChoice == 0) {
+                noExit = false;
+            }
+            else if(sellChoice == -1) {
+                System.out.println("Your input was invalid, try again");
+            }
+            else {
+                Item sellingItem = player.getPlayerBag().getBag().get(sellChoice-1);
+                if(sellingItem.equals(player.getCurrentArmor()) || sellingItem.equals(player.getCurrentWeapon())) {
+                    System.out.println("You cannot sell your equipped items, unequip them first.");
+                }
+                else {
+                    System.out.println("You are selling " + sellingItem.getName() + ". Are you sure you want to sell this?"
+                                        + "Yes/No (Y/y/N/n)");
+                    char finalChoice = ui.inputCharacter();
+                    if(finalChoice == 'Y' || finalChoice == 'y') {
+                        noExit = true;
+                        shopController.playerSells(player, sellingItem);
+                        System.out.println("You sold " + sellingItem.getName());
+                    }
+                }   
+            }
+        }
     }
 
     public void upgradeWeapon() {
         System.out.println("Choose an item from your inventory that you want to upgrade");
-        LinkedList<Item> playerbag = player.getBag().getBag();
+        LinkedList<Item> playerbag = player.getPlayerBag().getTypeList(Weapon.WEAPON);
         int count = 1;
-        for(Item item : playerbag) {
-            if(item.getItemType() == 'W') {
-                System.out.println(count + ". " + item.getName() + "Description: " + item.getDescription());
-            }
-            count++;
-        }
 
+        boolean noExit = true;
         int playerChoice = -1;
-        while(playerChoice == -1 )
-        try{ 
-            playerChoice = ui.inputNumber();
-        }
-        catch(InputMismatchException e ) {
-            System.out.println("The option you selected was invalid, try again or enter 0 to quit.");
-            playerChoice = -2;
-        }
-        if(playerChoice < 1 || playerChoice > count) {
-            System.out.println("The choice you entered was out of range or invalid, try again.");
-        }
-        else {
-            if(player.getBag().getBag().get(playerChoice) instanceof Weapon) {
-            /*I CBF */
-                Weapon weaponChosen = (Weapon)player.getBag().getBag().get(playerChoice);
-                int chosenEnchantment = chooseEnchantment();
-                boolean upgradingCurrentWeapon = false;
-                if(player.getCurrentWeapon().equals(weaponChosen)) {
-                    upgradingCurrentWeapon = true;
-                }
-                if(chosenEnchantment != 0) {
-                    player.removeFromBag(weaponChosen);
-                    try {
-                        Weapon enchantedWeapon = shopController.enchantWeapon(weaponChosen, chosenEnchantment);
-                        player.addToBag(enchantedWeapon);
-                        if(upgradingCurrentWeapon) {
-                            player.setWeapon(enchantedWeapon);
-                        }
-                    }
-                    catch(InvalidChoiceException ee) {
-                        System.out.println("Failed to enchant Weapon");
-                    }
-                }
+        while(noExit) { 
+            /*Display the upgradable weapons in the player bag */
+            for(Item item : playerbag) {
+                System.out.println(count + ". " + item.getName() + "Description: " + item.getDescription());
+                count++;
             }
-        }
+            try{ 
+                playerChoice = ui.inputNumber();
+            }
+            catch(InputMismatchException e ) {
+                System.out.println("The option you selected was invalid, try again or enter 0 to quit.");
+                playerChoice = -1;
+            }
+            playerChoice = playerChoice == 0 || (playerChoice >= 1 && playerChoice <= count) ? playerChoice : -1;
+            /*User wishes to quit enchanting at weapon selection */
+            if(playerChoice == 0) {
+                noExit = false;
+            }
+            else  {
+                boolean notDone = true;
+                while(notDone)
+                { 
+                    Item weaponChosen = playerbag.get(playerChoice - 1);
+                    int chosenEnchantment = chooseEnchantment();
+                    if(chosenEnchantment == 0) {
+                        notDone = false;
+                    }
+                    else {
+                        boolean upgradingCurrentWeapon = false;
+                        if(player.getCurrentWeapon().equals(weaponChosen)) {
+                            upgradingCurrentWeapon = true;
+                        }
+                        player.removeFromBag(weaponChosen);
+                        try {
+                            Item enchantedWeapon = shopController.enchantWeapon(weaponChosen, chosenEnchantment);
+                            player.addToBag(enchantedWeapon);
+                            if(upgradingCurrentWeapon) {
+                                player.setWeapon(enchantedWeapon);
+
+                            }
+                        }
+                        catch(InvalidChoiceException ee) {
+                            System.out.println("Failed to enchant Weapon");
+                        }
+                            notDone = false;
+                            noExit = false;
+                    }
+                }
+            }  
+       } 
     }
 
     public int chooseEnchantment() {
@@ -152,7 +243,7 @@ public class ShopViewer {
     }
 
     public void displaySoldItem(Item item) {
-        System.out.println("You sold " + item.getName() + " for " + (int)(item.getCost()*0.80) + " gold.");
+        System.out.println("You sold " + item.getName() + " for " + (int)(item.getCost()*Shop.SELLING_PRICE) + " gold.");
     }
 
     public void displayBoughtItem(Item item) {
@@ -175,8 +266,10 @@ public class ShopViewer {
     }
 
     public void displayPlayerSell(Player player) {
+        int counter = 1;
         for(Item item : player.getPlayerBag().getBag())  {
-            System.out.println(item.getName() + ", Cost: " + (int)(item.getCost() * 0.80));
+            System.out.println(counter + ". " + item.getName() + ", Cost: " + (int)(item.getCost() * Shop.SELLING_PRICE));
+            counter++;
         }
     }
 

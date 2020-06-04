@@ -4,6 +4,7 @@ public class Player extends Character{
     public static final String PLAYER = "Player";
     public static final int DEFAULT_PLAYER_HP = 30;
     public static final int MAX_BAG_SIZE = 15;
+    public static final int DEFUALT_GOLD = 100;
     private Item currentWeapon;
     private Item currentArmor;
 
@@ -17,7 +18,7 @@ public class Player extends Character{
         currentArmor = null;
 
         bag = new PlayerBag(MAX_BAG_SIZE);
-        setGold(100);
+        this.gold = DEFUALT_GOLD;
     }
 
     public Player(String name) {
@@ -39,7 +40,8 @@ public class Player extends Character{
 
         player.setHealth(getCurrentHealth());
         player.setMaxHealth(getMaxHealth());
-       
+        player.setWeapon(getCurrentWeapon());
+        player.setArmor(getCurrentArmor());
         player.setGold(this.gold);
 
         return player;

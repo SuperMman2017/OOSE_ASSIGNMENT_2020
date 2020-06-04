@@ -1,5 +1,6 @@
 
 public class PotionOfHealing extends ItemDecorator {
+    public static final char POTION_OF_HEALING = 'H';
     protected Item potion;
     public static final String POTION_HEALING_DESCRIPTION = "Heals User by a certain amount";
     public PotionOfHealing(Item potion) {
