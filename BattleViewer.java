@@ -15,17 +15,20 @@ public class BattleViewer {
     }
 
     
-    /**/
+    /*Start the battle*/
     public void battle() {
+        changeEnemy();
         while(player.isAlive() && enemy.isAlive()) {
             battleController.displayPlayer();
             battleController.displayEnemy(enemy);
             displayPlayerChoice(player);
             int choice = playerBattleChoice();
+            
             if(choice == 1) {
                 battleController.playerAttacks();
             }
-            else {
+
+            else if(choice == 2){
                 System.out.println("Choose an item by number.");
                 System.out.println("Available items are usable as listed: ");
                 displayPlayerUsable();
@@ -35,11 +38,9 @@ public class BattleViewer {
                     /*item is null when player cancels item selection */
                     battleController.playerUsePotion(item);
                 }
-                else {
-                    /*Go back to attack or item options */
-                }
             }
             if(player.isAlive() && !enemy.isAlive()) {
+                enemyDefeated();
                 int goldEarned = enemy.getGoldDrop(); 
                 String winMessage = new String (player.getName() + " Won!" + "\nYou picked up " + goldEarned + " gold.");
                 battleController.logMove(winMessage);

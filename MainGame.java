@@ -15,28 +15,37 @@ public class MainGame {
     private static Loader loader = new TextFileLoader(); 
     private static ItemFactory itemFactory = new ItemFactory();
     private static EnemyFactory enemyFactory = new EnemyFactory();
-
+    private static BattleController battleController;
+    private static ShopViewer shopViewer;
+    private static UserInterface ui;
+    private static GameViewer game;
     public static void main(String []args) {
+        boolean fileLoaded = true;
         Shop shop = new Shop();
         Player player = new Player();
+        ui = new UserInterface();
+        ShopMenu shopController = new ShopMenu(shop);
+        battleController = new BattleController(player);
+        shopViewer = new ShopViewer(ui, shopController, player);
+        game = new GameViewer(battleController, shopController, shopViewer, ui);
+
+        /*Try load items from a file */
         try {
             loadItems(itemFactory, shop, loader.Load(shopFile));
-        }
-        catch(InvalidFileException e) {
-            System.out.println(e.getMessage());
-        }
-        try{
             loadPlayer(shop, player);
         }
-        catch(IllegalArgumentException er) {
-            System.out.println(er.getMessage());
+        catch(InvalidFileException e) {
+            System.out.println("Failed to load items ");
+            fileLoaded = false;
         }
         catch(NullPointerException e) {
             System.out.println(e.getMessage());
         }
-         System.out.println("Player weapon is " + player.getCurrentWeapon().getName() + 
-                            " \nCurrent armor: " + player.getCurrentArmor().getName());
 
+        /*Start the game if the file successfully loaded */
+        if(fileLoaded) {
+
+        } 
     }
 
     /*Sets player's weapon and armor to the cheapest items from the shop */

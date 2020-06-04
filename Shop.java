@@ -42,6 +42,8 @@ public class Shop {
         weapon = enchanter.enchantDamage(weapon, damage);
     }
 
+
+    /*Finds the cheapest armor in the shop */
     public Item cheapestArmor() {
         int price = 10000;
         Item cheapestArmor = null;
@@ -58,6 +60,8 @@ public class Shop {
         return cheapestArmor;
     }
 
+
+    /*Finds the cheapest weapon in the shop */
     public Item cheapestWeapon() {
         int price = 10000;
         Item cheapestWeapon = null;

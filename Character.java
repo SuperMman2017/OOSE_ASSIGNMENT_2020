@@ -43,6 +43,9 @@ public abstract class Character implements Actor {
         this.defense = defense;
     }
     
+    @Override public void setName(String name) {
+        this.name = name;
+    }
     @Override public int getMaxHealth() {
         return maxHealth;
     }
@@ -67,7 +70,6 @@ public abstract class Character implements Actor {
     @Override public boolean isAlive() {
         return health != 0;
     }
-
     /*public void loseHealth(int damage) {
         setHealth(getCurrentHealth() - Math.max(0,damage - this.getDefense()) ) ;
     }*/

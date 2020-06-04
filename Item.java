@@ -60,6 +60,13 @@ public abstract class Item {
         Probability prob = new Probability();
         return prob.getRandomNumberBetween(minEffect, maxEffect);
     }
-    
+
+    public int getMinEffect() {
+        return minEffect;
+    }
+
+    public int getMaxEffect() {
+        return maxEffect;
+    }
     public abstract void doEffect(Character player);
 }

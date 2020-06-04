@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public interface Actor 
 {
     public int attack(LinkedList<String> log);
-    
+    public void setName(String name);
     public void setHealth(int health);
     public void setMaxHealth(int health);
     public void setDefense(int defense);
