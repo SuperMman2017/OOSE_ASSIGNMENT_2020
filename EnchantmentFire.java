@@ -4,9 +4,9 @@ public class EnchantmentFire extends WeaponDecorator{
     public static final String ENCHANTMENT_DESCRIPTION = " Enchantment Effect: Additional Fire damage to enemy dealing +";
     public static final int MIN_DAMAGE = 5;
     public static final int MAX_DAMAGE = 10;
-    protected Weapon decoratedWeapon;
+    protected Item decoratedWeapon;
     protected int damageUp;
-    public EnchantmentFire(Weapon weapon) {
+    public EnchantmentFire(Item weapon) {
         this.decoratedWeapon = weapon;
     }
 
@@ -17,7 +17,7 @@ public class EnchantmentFire extends WeaponDecorator{
 
     @Override public int getPower() {
         this.setEnchantment(MAX_DAMAGE);
-        return decoratedWeapon.getPower() + this.damageUp;
+        return decoratedWeapon.getEffect() + this.damageUp;
     }
 
     @Override public String getDescription() {

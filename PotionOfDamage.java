@@ -1,8 +1,8 @@
 
 public class PotionOfDamage extends ItemDecorator{
-    protected Potion potion;
+    protected Item potion;
     public static final String POTION_DAMAGE_DESCRIPTION = "Inflicts damage towards opponent";
-    public PotionOfDamage(Potion potion) {
+    public PotionOfDamage(Item potion) {
         this.potion = potion;
         setDescription(POTION_DAMAGE_DESCRIPTION + " for " + potion.getEffect());
     }

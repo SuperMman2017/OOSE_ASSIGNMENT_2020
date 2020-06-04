@@ -16,6 +16,7 @@ public class MainGame {
     private static ItemFactory itemFactory = new ItemFactory();
     private static EnemyFactory enemyFactory = new EnemyFactory();
     private static BattleController battleController;
+    private static BattleViewer battleViewer;
     private static ShopViewer shopViewer;
     private static UserInterface ui;
     private static GameViewer game;
@@ -26,9 +27,9 @@ public class MainGame {
         ui = new UserInterface();
         ShopMenu shopController = new ShopMenu(shop);
         battleController = new BattleController(player);
+        battleViewer = new BattleViewer(ui, player);
         shopViewer = new ShopViewer(ui, shopController, player);
-        game = new GameViewer(battleController, shopController, shopViewer, ui);
-
+        game = new GameViewer(battleViewer,shopViewer,ui);
         /*Try load items from a file */
         try {
             loadItems(itemFactory, shop, loader.Load(shopFile));
@@ -44,8 +45,8 @@ public class MainGame {
 
         /*Start the game if the file successfully loaded */
         if(fileLoaded) {
-
-        } 
+            game.startGame();
+        }
     }
 
     /*Sets player's weapon and armor to the cheapest items from the shop */

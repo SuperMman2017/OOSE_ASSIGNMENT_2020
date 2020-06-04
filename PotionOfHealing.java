@@ -1,8 +1,8 @@
 
 public class PotionOfHealing extends ItemDecorator {
-    protected Potion potion;
+    protected Item potion;
     public static final String POTION_HEALING_DESCRIPTION = "Heals User by a certain amount";
-    public PotionOfHealing(Potion potion) {
+    public PotionOfHealing(Item potion) {
         this.potion = potion;
         setDescription(POTION_HEALING_DESCRIPTION + " for " + potion.getEffect());
     }

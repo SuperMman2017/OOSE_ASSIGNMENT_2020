@@ -1,5 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.LinkedList;
+
 public class ShopViewer {
     private Player player;
     private ShopMenu shopController;
@@ -15,7 +16,41 @@ public class ShopViewer {
         System.out.println("Welcome to the shop!");
         while(notDone) {
             displayShopChoice();
-            
+            int shopChoice =-1;
+            boolean noExit = true;
+            while(noExit) {
+                try {
+                    shopChoice = ui.inputNumber();
+                }
+                catch(InputMismatchException e ){
+                    shopChoice = -1;
+                }
+                shopChoice = shopChoice >= 1 && shopChoice <= 4 ? shopChoice : -1;
+                if(shopChoice == -1) {
+                    System.out.println("You selection was invalid, try again.");
+                }
+                else {
+                    noExit = false;
+                    switch(shopChoice) {
+                        case 1: 
+
+                            buyItem();
+                            break;
+
+                        case 2: 
+
+                            break;
+
+                        case 3:
+                            upgradeWeapon();
+                            break;
+                        case 4:
+                            System.out.println("Leaving shop."); 
+                            notDone = false;
+                            break;
+                    }
+                }
+            }
         }        
     }
 
@@ -113,7 +148,7 @@ public class ShopViewer {
 
 
     public void displayShopChoice() {
-        System.out.println("1. Buy\n2. Sell Item\n3. Enchant Weapon");
+        System.out.println("1. Buy\n2. Sell Item\n3. Enchant Weapon\n4. Leave shop");
     }
 
     public void displaySoldItem(Item item) {

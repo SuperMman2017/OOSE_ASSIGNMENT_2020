@@ -20,7 +20,7 @@ public class UserInterface {
     }
 
     public String inputString() {
-        return new String(input.nextLine());
+        return new String(input.next());
     }
 
     public int inputNumber() {
@@ -35,7 +35,8 @@ public class UserInterface {
     }
 
     public char inputCharacter() {
-        return input.nextLine().charAt(0);
+        char in = input.next().charAt(0);
+        return in;
     }
 
 }
