@@ -53,7 +53,7 @@ public class GameViewer {
                         break;
                     //Player wants to start battle    
                     case 5:
-                        battleViewer.battle();
+                        noExit = battleViewer.battle();
                         break;
                     //Player wishes to exit    
                     case 6:

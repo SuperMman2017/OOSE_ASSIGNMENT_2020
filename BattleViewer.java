@@ -8,8 +8,9 @@ public class BattleViewer {
     private BattleController battleController;
     private EnemyFactory enemyFactory;
     private UserInterface ui;
-    
+    private int battleEncounter;
     public BattleViewer(UserInterface ui, Player player, EnemyFactory enemyFactory) {
+        battleEncounter = 0;
         this.player = player;
         this.ui = ui;
         this.enemyFactory = enemyFactory;
@@ -17,9 +18,12 @@ public class BattleViewer {
         battleController = new BattleController(player);
     }
 
-    boolean playerTurn = true;
+
     /*Start the battle*/
-    public void battle() {
+    public boolean battle() {
+        battleEncounter++;
+        boolean playerTurn = true;
+        battleController.logMove("Battle Encounter No#" + battleEncounter);
         changeEnemy();
         if(enemy == null) {
             System.out.println("Enemy null");
@@ -32,12 +36,15 @@ public class BattleViewer {
             battleController.displayEnemy(enemy);
             displayPlayerChoice(player);
             int choice = playerBattleChoice();
-            
+            if(!playerTurn) {
+                playerTurn = true;
+                battleController.enemyAttacks();
+                battleController.displayLastMessage();
+            }
             if(choice == 1) {
                 battleController.playerAttacks();
                 battleController.displayLastMessage();
-                battleController.enemyAttacks();
-                battleController.displayLastMessage();
+                playerTurn = false;
             }
 
             else if(choice == 2){
@@ -48,7 +55,16 @@ public class BattleViewer {
                 Item item = chooseItem(player.getPlayerBag().getTypeList(Potion.POTION).size());
                 if(item != null) {
                     /*item is null when player cancels item selection */
-                    battleController.playerUsePotion(item);
+                    boolean successUse = battleController.playerUsePotion(item);
+                    if(successUse) {
+                        playerTurn = false;
+                    }
+                    else {
+                        System.out.println("You can't use this item");
+                    }
+                }
+                else {
+                    System.out.println("ERROR: Item retrieved was null");
                 }
             }
 
@@ -66,8 +82,7 @@ public class BattleViewer {
                 battleController.displayLog();
             }
         }
-
-
+        return player.isAlive();
     }
 
     public Item chooseItem(int max) {
@@ -97,6 +112,7 @@ public class BattleViewer {
 
                 int finalChoice = ui.inputNumber();
                 if(finalChoice == 1) {
+                    itemChosen = item;
                     notDone = false;
                 }
                 else {

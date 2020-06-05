@@ -31,23 +31,28 @@ public class BattleController  {
         player.setHealth(Math.max(0, player.getCurrentHealth() - healthLost) );
     }
 
-    public void playerUsePotion(Item item){
-        if(item.getDescription().equals("H")) {
+    public boolean playerUsePotion(Item item){
+        boolean successUse = false;
+        if( item.getDescription().charAt(0) == PotionOfHealing.POTION_OF_HEALING
+            && player.getCurrentHealth() != player.getMaxHealth()) {
+            successUse = true;
             int oldHealth = player.getCurrentHealth();
             item.doEffect(player);
             int healthGained = player.getCurrentHealth() - oldHealth;
             logMove(   player.getName() + " used " + item.getName() + "\n" +
                                         player.getName() + " regained " + healthGained + " health.");
         }
-        else if (item.getDescription().equals("D")) {
+        else if (item.getDescription().charAt(0) == PotionOfDamage.POTION_OF_DAMAGE) {
+            successUse = true;
             item.doEffect(player);
             int attack = player.getAttack();
-            int healthLost = enemy.getDefense() - attack;
+            int healthLost = attack;
             logMove(new String(player.getName() + " used " + item.getName()) );
             enemy.setHealth(Math.max(0, Math.max(0,enemy.getCurrentHealth() - healthLost)) );
             logMove(new String(enemy.getName() + " lost " + healthLost + " health.")  );
         }
         player.removeFromBag(item);
+        return successUse;
     }
 
     /**/

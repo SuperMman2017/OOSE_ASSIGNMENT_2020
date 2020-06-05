@@ -8,6 +8,7 @@ public class EnchantmentFire extends WeaponDecorator{
     protected int damageUp;
     public EnchantmentFire(Item weapon) {
         this.decoratedWeapon = weapon;
+        this.setEffect(weapon.getMinEffect(), weapon.getMaxEffect());
     }
 
     @Override public void setEnchantment(int effect) {
