@@ -1,7 +1,5 @@
 OOSE Assignment for turn based combat system
-
-- run java MainGame, this will start the game and read shopdata.csv which contains item data to be loaded into the shop
-
+- RUN WITH ant then java -jar in dist folder to play the game
 
 - MVC:
     Model: Player/Character/Enemy, Containers
