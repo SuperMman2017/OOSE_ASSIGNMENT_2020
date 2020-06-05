@@ -1,16 +1,14 @@
 OOSE Assignment for turn based combat system
 
-- run java Game will prompt to a loader menu that asks which method of loading will occur to create the objects, this can be used to load from a file, database, web, html etc. The choices only appear if they are available, more types of loading can be added later.
-
+- run java MainGame, this will start the game and read shopdata.csv which contains item data to be loaded into the shop
 
 
 - MVC:
     Model: Player/Character/Enemy, Containers
     Controller: User Interface, Battle system
-    View: 
+    View: GameViewer,ShopViewer,BattleViewer
 
 - Character/Player/Enemy classes are implemented using the template/strategy pattern
--
 - Item class for weapons/armor and potions are implemented using decorator pattern
 - Observer pattern for the battle system and game UI 
 - Player owns a Bag container for all storable items including weapons and armor
