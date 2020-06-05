@@ -19,6 +19,7 @@ public class GameViewer {
         boolean noExit = true;
         System.out.println("Game started, options displayed below");
         while(noExit) {
+            battleViewer.showPlayerInfo();
             displayMenu();
             int chosenInput = -1;
             System.out.println("Enter your the number of your choice");

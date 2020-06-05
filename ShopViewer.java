@@ -164,11 +164,12 @@ public class ShopViewer {
             if(playerChoice == 0) {
                 noExit = false;
             }
-            else  {
+            else if(playerChoice != -1) {
                 boolean notDone = true;
                 while(notDone)
                 { 
                     Item weaponChosen = playerbag.get(playerChoice - 1);
+                    /*Asks user for a number to corresponding to which enchantment type they want */
                     int chosenEnchantment = chooseEnchantment();
                     if(chosenEnchantment == 0) {
                         notDone = false;
@@ -178,13 +179,12 @@ public class ShopViewer {
                         if(player.getCurrentWeapon().equals(weaponChosen)) {
                             upgradingCurrentWeapon = true;
                         }
-                        player.removeFromBag(weaponChosen);
                         try {
                             Item enchantedWeapon = shopController.enchantWeapon(weaponChosen, chosenEnchantment);
+                            player.removeFromBag(weaponChosen);
                             player.addToBag(enchantedWeapon);
                             if(upgradingCurrentWeapon) {
                                 player.setWeapon(enchantedWeapon);
-
                             }
                         }
                         catch(InvalidChoiceException ee) {

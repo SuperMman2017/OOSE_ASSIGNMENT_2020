@@ -23,4 +23,16 @@ public class EnchantmentFire extends WeaponDecorator{
     @Override public String getDescription() {
         return new String(decoratedWeapon.getDescription() + ENCHANTMENT_DESCRIPTION + MIN_DAMAGE +"-" + MAX_DAMAGE);
     }
+
+    @Override public String getName(){
+        return new String( ENCHANTED_FIRE + " " + decoratedWeapon.getName());
+    }
+
+    @Override public char getItemType() {
+        return decoratedWeapon.getItemType();
+    }
+
+    @Override public int getCost() {
+        return decoratedWeapon.getCost();
+    }
 }

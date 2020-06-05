@@ -95,6 +95,10 @@ public class BattleViewer {
         return itemChosen;
     }
 
+    public void showPlayerInfo() {
+        battleController.displayPlayer();
+    }
+
     public int playerBattleChoice() {
         int choice = 0;
         while(choice != 0 || choice != -1) {

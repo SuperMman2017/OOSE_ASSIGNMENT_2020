@@ -18,10 +18,19 @@ public class EnchantmentPower extends WeaponDecorator{
     }
 
     @Override public String getName() {
-        return new String(ENCHANTED_POWER + decoratedWeapon.getName());
+        return new String(ENCHANTED_POWER + " " + decoratedWeapon.getName());
     }
 
     @Override public String getDescription() {
-        return new String(decoratedWeapon.getDescription() + ENCHANTMENT_DESCRIPTION + damageUp);
+        return new String(decoratedWeapon.getDescription() + ENCHANTMENT_DESCRIPTION + POWER_UP);
     }
+
+    @Override public char getItemType() {
+        return decoratedWeapon.getItemType();
+    }
+
+    @Override public int getCost() {
+        return decoratedWeapon.getCost();
+    }
+
 }

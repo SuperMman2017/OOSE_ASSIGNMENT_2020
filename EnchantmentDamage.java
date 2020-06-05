@@ -20,10 +20,18 @@ public class EnchantmentDamage extends WeaponDecorator{
     }
 
     @Override public String getName(){ 
-        return ENCHANTED_DAMAGE + decoratedWeapon.getName();
+        return ENCHANTED_DAMAGE + " " + this.decoratedWeapon.getName();
     }
 
     @Override public String getDescription() {
         return new String(decoratedWeapon.getDescription() + ENCHANMENT_DESCRIPTION + this.damageUp);
+    }
+
+    @Override public char getItemType() {
+        return decoratedWeapon.getItemType();
+    }
+
+    @Override public int getCost() {
+        return decoratedWeapon.getCost();
     }
  }
