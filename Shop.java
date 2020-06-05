@@ -2,10 +2,8 @@ import java.util.LinkedList;
 public class Shop {
     public static double SELLING_PRICE = 0.50;
     private LinkedList<Item> shopItems;
-    private WeaponEnchanter enchanter;
     public Shop() {
         shopItems = new LinkedList<>();
-        enchanter = new WeaponEnchanter();
     }
 
     /*Adds an item object to the list of items in the shop */

@@ -9,13 +9,13 @@ public class BattleViewer {
     private EnemyFactory enemyFactory;
     private UserInterface ui;
     private int battleEncounter;
-    public BattleViewer(UserInterface ui, Player player, EnemyFactory enemyFactory) {
+    public BattleViewer(UserInterface ui, Player player, EnemyFactory enemyFactory, BattleController battleController) {
         battleEncounter = 0;
         this.player = player;
         this.ui = ui;
         this.enemyFactory = enemyFactory;
         enemy = enemyFactory.getRandomEnemy();
-        battleController = new BattleController(player);
+        this.battleController = battleController;
     }
 
 
@@ -36,17 +36,19 @@ public class BattleViewer {
             battleController.displayEnemy(enemy);
             displayPlayerChoice(player);
             int choice = playerBattleChoice();
-            if(!playerTurn) {
-                playerTurn = true;
-                battleController.enemyAttacks();
-                battleController.displayLastMessage();
-            }
+ 
             if(choice == 1) {
                 battleController.playerAttacks();
                 battleController.displayLastMessage();
                 playerTurn = false;
             }
 
+            if(!playerTurn && enemy.isAlive()) {
+                playerTurn = true;
+                battleController.enemyAttacks();
+                battleController.displayLastMessage();
+            }
+ 
             else if(choice == 2){
                 System.out.println("Choose an item by number.");
                 System.out.println("Available items are usable as listed: ");

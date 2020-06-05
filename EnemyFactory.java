@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Set;
 
 /*  EnemyFactory class stores all the enemy objects in the game for 

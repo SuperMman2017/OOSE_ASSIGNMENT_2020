@@ -142,7 +142,7 @@ public void changeArmor() {
                 int counter = 1;
                 for(Item item : armorlist) {
                 System.out.println( counter + ". " + item.getName() + item.getDescription() 
-                                    + "\nMin Attack: " + item.getMinEffect() + "\nMax Attack: "
+                                    + "\nMin Defense: " + item.getMinEffect() + "\nMax Defense: "
                                     + item.getMaxEffect());
                     counter++;
                 }
@@ -162,11 +162,11 @@ public void changeArmor() {
                     }
                     else {
                         System.out.println("You chose: " + armor.getName());
-                        System.out.println("Do you want to equip this weapon? (Y/y/N/n)");
+                        System.out.println("Do you want to equip this Armor? (Y/y/N/n)");
                         char decision = ui.inputCharacter();
                         if(decision == 'Y' || decision == 'y') {
                             notExit = false;
-                            player.setWeapon(armor);
+                            player.setArmor(armor);
                             System.out.println("You equipped " + armor.getName() );
                         }
                     }

@@ -18,11 +18,12 @@ public class BattleController  {
 
     public void playerAttacks() {
         int attack = player.attack(log);
-        int healthLost = Math.max(0,attack - enemy.getDefense());
+        
+        int healthLost = Math.max(0, attack - enemy.getDefense());
         enemy.setHealth(Math.max(0, enemy.getCurrentHealth() - healthLost) );
         logMove(new String(player.getName() + " attacked with "
                  + player.getCurrentWeapon().getName() + " with "
-                 + attack +" atk   power.\n " + enemy.getName() +" lost " + healthLost + " health."));
+                 + attack +" atk   power.\n" + enemy.getName() +" lost " + healthLost + " health."));
     }
 
     public void enemyAttacks() {
@@ -64,6 +65,8 @@ public class BattleController  {
     }   
 
     public void displayEnemy(Enemy enemy) {
+
+        System.out.println("Enemy defense: " + enemy.getDefense());
         System.out.println("Enemy: " + enemy.getName() + "\n" + "Health: " + 
                             enemy.getCurrentHealth() + "/" + enemy.getMaxHealth());
     } 

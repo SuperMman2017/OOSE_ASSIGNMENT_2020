@@ -1,4 +1,3 @@
-import java.text.NumberFormat;
 import java.util.LinkedList;
 
 public class MainGame {
@@ -27,7 +26,7 @@ public class MainGame {
         ui = new UserInterface();
         ShopMenu shopController = new ShopMenu(shop);
         battleController = new BattleController(player);
-        battleViewer = new BattleViewer(ui, player,enemyFactory);
+        battleViewer = new BattleViewer(ui, player,enemyFactory, battleController);
         shopViewer = new ShopViewer(ui, shopController, player);
         game = new GameViewer(battleViewer,shopViewer,ui, player);
         /*Try load items from a file */
@@ -81,7 +80,6 @@ public class MainGame {
             int parseError = 0;
             String[] tokens = content.split(regex);
             
-            System.out.println(tokens[2] + " " + tokens[3] + " " +tokens[4]);
             /*7 arguments for weapon */
             if(tokens.length == WEAPON_ARG) {
                 parseError = 0;
@@ -152,7 +150,6 @@ public class MainGame {
             }
             if(parseError == 0 && item != null) {
                 shop.addItem(item);
-                System.out.println(item.getName() + " Item added to shop");
             }
             else if (parseError == 1 ) {
                 System.out.println("Error loadingFiles");

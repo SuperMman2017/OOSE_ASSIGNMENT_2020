@@ -7,7 +7,6 @@ public class PlayerBag {
     
     private LinkedList<Item> bag;
     private int maxSize;
-    private int currentSize;
 
     public PlayerBag(int maxSize) {
         bag = new LinkedList<Item>();
