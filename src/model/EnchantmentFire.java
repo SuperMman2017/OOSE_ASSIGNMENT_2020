@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public class EnchantmentFire extends WeaponDecorator{
     public static final int ENCHANTMENT_COST = 20;
     public static final String ENCHANTED_FIRE = "Enchantment Fire-Power";

@@ -1,4 +1,3 @@
-package GameExceptions;
 public class InvalidEnemyException extends Exception{
     /**
      *

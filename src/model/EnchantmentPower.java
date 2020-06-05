@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public class EnchantmentPower extends WeaponDecorator{
     public static final int ENCHANTMENT_COST = 10;
     public static final String ENCHANTED_POWER = "Enchanted Power-Up ";

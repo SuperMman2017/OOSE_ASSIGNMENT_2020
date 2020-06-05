@@ -1,5 +1,3 @@
-package model;
-import model.*;
 /*This class is used to enchant weapons*/
 public class WeaponEnchanter {
     public static final int ENCHANT_MIN = 1;

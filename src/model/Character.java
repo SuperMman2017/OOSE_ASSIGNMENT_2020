@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public abstract class Character implements Actor {
 
     private String name;

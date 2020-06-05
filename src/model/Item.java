@@ -1,5 +1,3 @@
-package model;
-import model.*;
 /*Super class for Armor, weapons and potions*/
 public abstract class Item {
 

@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public class PotionOfHealing extends ItemDecorator {
     public static final char POTION_OF_HEALING = 'H';
     protected Item potion;

@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public abstract class Enemy extends Character implements SpecialAbility {
 
     private int goldDrop;

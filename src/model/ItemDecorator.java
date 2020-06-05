@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public abstract class ItemDecorator extends Item{
     public ItemDecorator() {
         

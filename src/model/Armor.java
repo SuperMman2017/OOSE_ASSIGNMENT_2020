@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public class Armor extends Item {
     public static final char ARMOR = 'A';
     protected String material;

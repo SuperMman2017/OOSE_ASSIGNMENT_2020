@@ -1,5 +1,3 @@
-package model;
-import model.*;
 import java.util.LinkedList;
 public class Slime extends Enemy {
 

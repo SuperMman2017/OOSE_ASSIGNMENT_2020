@@ -1,5 +1,3 @@
-package model;
-import model.*;
 import java.util.Random; 
 
 public class Probability {

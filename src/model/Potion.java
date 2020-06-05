@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public class Potion extends Item {
     public static final char POTION = 'P';
     /*potionType determines what type of potion it is e.g D = damage, H  = heal */

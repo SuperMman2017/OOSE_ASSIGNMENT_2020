@@ -1,5 +1,3 @@
-package model;
-import model.*;
 /*Decorator for weapons for enchanting weapons*/
 public class WeaponDecorator extends Weapon{
     public static final String ENCHANTMENT_1 = "Damage-Up";

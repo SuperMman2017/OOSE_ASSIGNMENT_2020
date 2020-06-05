@@ -1,5 +1,3 @@
-package model;
-import model.*;
 import java.util.LinkedList;
 import java.io.*;
 

@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public class ItemFactory {
 
     public ItemFactory() {

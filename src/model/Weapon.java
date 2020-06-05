@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public class Weapon extends Item{
     public static final char WEAPON = 'W';
     protected String damageType;

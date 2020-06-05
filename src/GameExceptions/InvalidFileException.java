@@ -1,4 +1,3 @@
-package GameExceptions;
 public class InvalidFileException extends Exception {
     /**
      *

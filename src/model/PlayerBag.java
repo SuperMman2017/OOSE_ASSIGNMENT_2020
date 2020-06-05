@@ -1,5 +1,3 @@
-package model;
-import model.*;
 /*  Player bag class that stores in-game Item objects 
     for player to keep over the course of the game*/
 import java.util.LinkedList;

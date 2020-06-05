@@ -1,5 +1,3 @@
-package model;
-import model.*;
 public abstract class ArmorDecorator extends ItemDecorator {
     protected Armor armor;
     public ArmorDecorator(Armor armor) {

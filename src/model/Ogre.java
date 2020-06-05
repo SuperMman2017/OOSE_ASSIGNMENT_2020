@@ -1,5 +1,3 @@
-package model;
-import model.*;
 import java.util.LinkedList;
 
 /*Ogre subclass of Enemy class*/
