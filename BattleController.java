@@ -9,15 +9,26 @@ public class BattleController  {
     public BattleController(Player player) {
         this.player = player;
         log = new LinkedList<>();
+        this.enemy = null;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
     }
 
     public void playerAttacks() {
         int attack = player.attack(log);
         int healthLost = Math.max(0,attack - enemy.getDefense());
-        enemy.setHealth(enemy.getCurrentHealth() - healthLost);
+        enemy.setHealth(Math.max(0, enemy.getCurrentHealth() - healthLost) );
         logMove(new String(player.getName() + " attacked with "
                  + player.getCurrentWeapon().getName() + " with "
                  + attack +" atk   power.\n " + enemy.getName() +" lost " + healthLost + " health."));
+    }
+
+    public void enemyAttacks() {
+        int attack = enemy.attack(log);
+        int healthLost = Math.max(0, attack - player.getDefense());
+        player.setHealth(Math.max(0, player.getCurrentHealth() - healthLost) );
     }
 
     public void playerUsePotion(Item item){
@@ -63,10 +74,6 @@ public class BattleController  {
         }
     }
 
-    public void playerLost() {
-
-    }
-
     /*Not used anymore */
     /*public void usePotion(PotionOfHealing item) {
         player.removeFromBag(item);
@@ -76,5 +83,9 @@ public class BattleController  {
 
     public void increasePlayerGold(Enemy enemy) {
         player.setGold(enemy.getGoldDrop());
+    }
+
+    public void displayLastMessage() {
+        System.out.println(log.getLast());
     }
 }

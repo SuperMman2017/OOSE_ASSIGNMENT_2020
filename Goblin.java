@@ -24,12 +24,14 @@ public class Goblin extends Enemy
         specialAbility();
         Probability probAttack = new Probability();
         int damageDealt = probAttack.getRandomNumberBetween(GOBLIN_MIN_ATTACK, GOBLIN_MAX_ATTACK);
+        String move = "";
         if(specialActive) {
             setSpecial(false);
             damageDealt+=3;
-            log.add(new String(getName() + "use their special ability and will deal +3 damage this turn"));
+            move += "\n" +new String(getName() + "use their special ability and will deal +3 damage this turn");
         }
-        log.add(new String (getName() + " attacks with " + damageDealt + " power"));
+        move += "\n" + new String (getName() + " attacks with " + damageDealt + " power");
+        log.add(move);
         return damageDealt;
     }
 

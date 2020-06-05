@@ -16,7 +16,8 @@ public class ItemFactory {
         String newDescription = new String(""+type);
         potion.setItem(name, cost, newDescription, minEffect, maxEffect);
         Item typePotion = null;
-        if(type == 'D') {
+        potion.setType(Potion.POTION);
+        if(type == PotionOfDamage.POTION_OF_DAMAGE) {
             /*Wrap the potion object to create a potion of damage object*/ 
             typePotion = new PotionOfDamage(potion);
         }

@@ -20,4 +20,15 @@ public class PotionOfHealing extends ItemDecorator {
                          Math.max(player.getCurrentHealth(),player.getCurrentHealth() + potion.getEffect())) );
     }
 
+    @Override public String getDescription() {
+        return new String(""+POTION_OF_HEALING);
+    }
+
+    @Override public char getItemType() {
+        return potion.getItemType();
+    }
+
+    @Override public void setType(char type) {
+        potion.setType(type);
+    }
 }

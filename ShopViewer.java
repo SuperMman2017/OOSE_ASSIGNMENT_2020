@@ -39,7 +39,7 @@ public class ShopViewer {
                             break;
 
                         case 2: 
-                        sellItem();
+                            sellItem();
                             break;
 
                         case 3:
@@ -141,12 +141,14 @@ public class ShopViewer {
 
     public void upgradeWeapon() {
         System.out.println("Choose an item from your inventory that you want to upgrade");
-        LinkedList<Item> playerbag = player.getPlayerBag().getTypeList(Weapon.WEAPON);
-        int count = 1;
+        
 
         boolean noExit = true;
         int playerChoice = -1;
-        while(noExit) { 
+        while(noExit) {
+
+            LinkedList<Item> playerbag = player.getPlayerBag().getTypeList(Weapon.WEAPON);
+            int count = 1; 
             /*Display the upgradable weapons in the player bag */
             for(Item item : playerbag) {
                 System.out.println(count + ". " + item.getName() + "Description: " + item.getDescription());
@@ -171,11 +173,13 @@ public class ShopViewer {
                     Item weaponChosen = playerbag.get(playerChoice - 1);
                     /*Asks user for a number to corresponding to which enchantment type they want */
                     int chosenEnchantment = chooseEnchantment();
+                    int price = shopController.goldPrice(chosenEnchantment);
                     if(chosenEnchantment == 0) {
                         notDone = false;
                     }
-                    else {
+                    else if(player.getCurrentGold() >= price) {
                         boolean upgradingCurrentWeapon = false;
+                        player.setGold(Math.max(0,player.getCurrentGold() - price));
                         if(player.getCurrentWeapon().equals(weaponChosen)) {
                             upgradingCurrentWeapon = true;
                         }
@@ -190,9 +194,12 @@ public class ShopViewer {
                         catch(InvalidChoiceException ee) {
                             System.out.println("Failed to enchant Weapon");
                         }
-                            notDone = false;
-                            noExit = false;
                     }
+                    else {
+                        System.out.println("You cannot afford this enchantment.");
+                    }
+                    notDone = false;
+                    noExit = false;
                 }
             }  
        } 

@@ -15,7 +15,8 @@ public class EnchantmentFire extends WeaponDecorator{
         damageUp = prob.getRandomNumberBetween(MIN_DAMAGE, effect);
     }
 
-    @Override public int getPower() {
+
+    @Override public int getEffect() {
         this.setEnchantment(MAX_DAMAGE);
         return decoratedWeapon.getEffect() + this.damageUp;
     }

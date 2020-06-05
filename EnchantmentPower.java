@@ -13,7 +13,7 @@ public class EnchantmentPower extends WeaponDecorator{
         this.damageUp = effect;
     }
 
-    @Override public int getPower() {
+    @Override public int getEffect() {
         return (int)(this.decoratedWeapon.getEffect()*POWER_UP);
     }
 

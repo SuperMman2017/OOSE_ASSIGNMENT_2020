@@ -36,11 +36,17 @@ public class Slime extends Enemy {
         specialAbility();
         Probability probAttack = new Probability();
         int damageDealt = probAttack.getRandomNumberBetween(SLIME_MIN_DAMAGE, SLIME_MAX_DAMAGE);
+        String move = "";
+        
         if(specialActive) {
             setSpecial(false);
             damageDealt = 0;
-            log.add(new String(this.getName() + " activated its special ability. " + SLIME_SPECIAL));
+            move = new String(this.getName() + " activated its special ability. " + SLIME_SPECIAL);
         }
+        else {
+            move = this.getName() + " attacks with " + damageDealt +" power.";
+        }
+        log.add(move);
         return damageDealt;
     }
 

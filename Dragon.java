@@ -39,20 +39,20 @@ public class Dragon extends Enemy
         //Do dragon ability attack
         int damageDealt = 0;
         Probability attackChance = new Probability();
-
+        String move = "";
         damageDealt = attackChance.getRandomNumberBetween(DRAGON_MIN_DAMAGE, DRAGON_MAX_DAMAGE);
         if(health_special == 1) {
             health_special = 0;
-            log.add(new String (getName() + " uses their special ability." + DRAGON_SPECIAL_2));
+            move += new String (getName() + " uses their special ability." + DRAGON_SPECIAL_2);
         }
         if(specialActive){ 
            
             /*Dragon does it's special move, it will deal twice the damage */
             setSpecial(false);
             damageDealt *= 2;
-            log.add(new String (getName() + " uses their special ability." + DRAGON_SPECIAL_1) );
+            move += "\n"+new String (getName() + " uses their special ability." + DRAGON_SPECIAL_1) ;
         }
-        log.add(new String(getName() + " attacks with " + damageDealt + " power"));
+        log.add( move + "\n"+ new String(getName() + " attacks with " + damageDealt + " power"));
         return damageDealt;
     }
 

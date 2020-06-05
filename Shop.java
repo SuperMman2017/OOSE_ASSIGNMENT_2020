@@ -39,9 +39,9 @@ public class Shop {
         return list;
     }
 
-    public void enchantDamage(Weapon weapon, int damage) {
+    /*public void enchantDamage(Weapon weapon, int damage) {
         weapon = enchanter.enchantDamage(weapon, damage);
-    }
+    }*/
 
 
     /*Finds the cheapest armor in the shop */

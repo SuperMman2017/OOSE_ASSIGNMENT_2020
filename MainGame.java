@@ -27,7 +27,7 @@ public class MainGame {
         ui = new UserInterface();
         ShopMenu shopController = new ShopMenu(shop);
         battleController = new BattleController(player);
-        battleViewer = new BattleViewer(ui, player);
+        battleViewer = new BattleViewer(ui, player,enemyFactory);
         shopViewer = new ShopViewer(ui, shopController, player);
         game = new GameViewer(battleViewer,shopViewer,ui, player);
         /*Try load items from a file */
@@ -47,10 +47,15 @@ public class MainGame {
 
         /*Start the game if the file successfully loaded */
         if(fileLoaded) {
-            if(player == null) {
-                System.out.println("Error, player is null");
+            try{
+                game.startGame();
             }
-            game.startGame();
+            catch(NullPointerException e ) {
+               e.printStackTrace();
+            } 
+        }
+        else {
+            System.out.println("Failed to start game");
         }
     }
 
@@ -95,7 +100,7 @@ public class MainGame {
                             parseError = 1;
                         }
                         weapon.setStat(name, damageType ,weaponType, minDamage, maxDamage);
-                        weapon.setDamage(minDamage, maxDamage);
+                        weapon.setEffect(minDamage, maxDamage);
                         weapon.setCost(cost);
                         item = weapon;
                     }
@@ -127,6 +132,7 @@ public class MainGame {
                     item.setCost(cost);
                     item.setName(tokens[1].trim());
                     item.setEffect(minEffect, maxEffect);
+                    item.setType(POTION);
                 }
 
                 else if (tokens[0].charAt(0) == ARMOR){

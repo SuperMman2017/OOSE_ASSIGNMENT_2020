@@ -15,7 +15,7 @@ public class EnchantmentDamage extends WeaponDecorator{
         this.damageUp = damageUp;
     }
 
-    @Override public int getPower() {
+    @Override public int getEffect() {
         return decoratedWeapon.getEffect() + damageUp;
     }
 

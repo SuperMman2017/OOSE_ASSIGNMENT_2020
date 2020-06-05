@@ -30,14 +30,17 @@ public class Ogre extends Enemy {
         Probability damageProb = new Probability();
         int damageDealt = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
         int secondAttack = 0;
+        String move = "";
         if(specialActive) {
-            log.add(new String(getName() +  " uses their special ability. " + OGRE_SPECIAL_ABILITY) );
-            log.add(new String(getName() + " attacks with " + damageDealt + " power."));
+            
+            move += new String(getName() +  " uses their special ability. " + OGRE_SPECIAL_ABILITY);
+            move += "\n" +new String(getName() + " attacks with " + damageDealt + " power.");
             secondAttack = damageProb.getRandomNumberBetween(OGRE_MIN_DAMAGE, OGRE_MAX_DAMAGE);
             damageDealt+=secondAttack;
             setSpecial(false);
         }
-        log.add(new String(getName() + " attacks with " + (damageDealt-secondAttack) + " power.") );
+        move += "\n" + new String(getName() + " attacks with " + (damageDealt-secondAttack) + " power.");
+        log.add(move);
         return damageDealt;
     }
 

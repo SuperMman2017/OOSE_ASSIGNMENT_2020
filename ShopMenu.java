@@ -64,6 +64,23 @@ public class ShopMenu {
             System.out.println(item.toString());
         }
     }
+    
+    public int goldPrice(int choice) {
+        int goldprice = 0;
+        if(choice == 1) {
+            goldprice = EnchantmentDamage.ENCHANTMENT_COST;
+        }
+        else if(choice == 2) {
+            goldprice = EnchantmentDamage.ENCHANT_COST_2;
+        }
+        else if(choice == 3) {
+            goldprice = EnchantmentPower.ENCHANTMENT_COST;
+        }
+        else if(choice == 4) {
+            goldprice = EnchantmentFire.ENCHANTMENT_COST;
+        }
+        return goldprice;
+    }
 
     public Item enchantWeapon(Item weapon, int choice) throws InvalidChoiceException {
         /*Enchant weeapon to add addinational damage + 2*/
