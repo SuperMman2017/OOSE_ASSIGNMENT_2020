@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Set;
 
 /*  EnemyFactory class stores all the enemy objects in the game for 
@@ -87,14 +88,16 @@ public class EnemyFactory {
     /*Changes the spawn rate of all enemies in the map */
     public void decreaseEnemyChances(int chance) {
         Set<String> chanceSet = enemyChances.keySet();
+        HashMap<String , Integer> newMap = new HashMap<>();
         for(String key : chanceSet) {
             
             /*  Remove the old spawn rate from the map
                  nd insert the new spawn rate */
             int oldChance = enemyChances.get(key);
-            enemyChances.remove(key);
-            enemyChances.put(key,Math.max(0, oldChance - chance));
+            int newChance = oldChance - chance;
+            newMap.put(key, newChance);
         }
+        this.enemyChances = newMap;
     }
 
     /*  Returns the chance of the enemy if name provided in the parameter exists in the map

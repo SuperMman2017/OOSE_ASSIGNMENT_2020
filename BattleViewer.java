@@ -160,9 +160,10 @@ public class BattleViewer {
 
     /** This method displays the usable items the player has in their bag**/
     public void displayPlayerUsables() {
+        int count = 1;
         LinkedList<Item> list = player.getPlayerBag().getTypeList(Potion.POTION);
         for(Item item : list) {
-            System.out.print(item.getName() + " ");
+            System.out.print(count + ". " + item.getName() + " ");
             if(item.getDescription().charAt(0) == PotionOfHealing.POTION_OF_HEALING) {
                 System.out.print(   PotionOfHealing.POTION_HEALING_DESCRIPTION 
                                     + " for " + item.getMinEffect() + "-" + item.getMaxEffect());
@@ -171,6 +172,7 @@ public class BattleViewer {
                 System.out.print(   PotionOfDamage.POTION_DAMAGE_DESCRIPTION
                                     + " for " + item.getMinEffect() + "-" + item.getMaxEffect());
             }
+            count++;
         }
     }
 
