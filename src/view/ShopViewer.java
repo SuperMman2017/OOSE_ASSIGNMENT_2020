@@ -77,7 +77,7 @@ public class ShopViewer {
             else if(    buyChoice >= GameViewer.MIN_CHOICE_VALUE && 
                         buyChoice <= shopController.getStock()) {
                     Item item = shopController.itemStock().get(buyChoice - 1);
-                    System.out.println("Are you sure you want to buy " + item.getName() + "?\n Enter Yes or No(Y/y/N/n)");
+                    displayBuyDecision(item);
                     char confirm = ui.inputCharacter();
                     if(confirm == 'Y' || confirm =='y') {
                         boolean canbuy = shopController.playerBuys(player, item);
@@ -86,7 +86,7 @@ public class ShopViewer {
                             System.out.println("You successfully bought " + item.getName());
                         }
                         else {
-                            System.out.println("You do not have enough to buy " + item.getName());
+                            displayInvalidPurchase();
                         }
 
                     }
@@ -126,8 +126,7 @@ public class ShopViewer {
                     System.out.println("You cannot sell your equipped items, unequip them first.");
                 }
                 else {
-                    System.out.println("You are selling " + sellingItem.getName() + ". Are you sure you want to sell this?"
-                                        + "Yes/No (Y/y/N/n)");
+                    displaySellDecision(sellingItem);
                     char finalChoice = ui.inputCharacter();
                     if(finalChoice == 'Y' || finalChoice == 'y') {
                         noExit = true;
@@ -275,14 +274,14 @@ public class ShopViewer {
     public void displayPlayerSell(Player player) {
         int counter = 1;
         for(Item item : player.getPlayerBag().getBag())  {
-            System.out.println(counter + ". " + item.getName() + ", Cost: " + (int)(item.getCost() * Shop.SELLING_PRICE));
+            System.out.println(counter + ". " + item.getName() + ", Cost: " + (int)(item.getCost() * Shop.SELLING_PRICE) + " gold.");
             counter++;
         }
     }
 
     public void displaySellDecision(Item item) {
         System.out.println("You are selling " +item.getName() + " for " 
-                            + (int)(item.getCost()*0.80) + "\nConfirm Yes (Y/y) or No (N/n)" );
+                            + (int)(item.getCost()*Shop.SELLING_PRICE) + " gold." + "\nConfirm Yes (Y/y) or No (N/n)" );
     }
 
     public void displayInvalidPurchase() {
