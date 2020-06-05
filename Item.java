@@ -58,8 +58,6 @@ public abstract class Item {
 
     public int getEffect() {
         Probability prob = new Probability();
-        System.out.println("min effect" + minEffect);
-        System.out.println("max effect" + maxEffect);
         return prob.getRandomNumberBetween(minEffect, maxEffect);
     }
 
