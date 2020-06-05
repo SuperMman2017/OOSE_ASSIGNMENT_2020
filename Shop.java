@@ -47,7 +47,6 @@ public class Shop {
         int price = 10000;
         Item cheapestArmor = null;
         for(Item item : shopItems) {
-            System.out.println(item.getName() + " " + item.getItemType());
             if(Armor.ARMOR == item.getItemType() && item.getCost() < price)  {
                 price = item.getCost();
                 cheapestArmor = item;

@@ -34,7 +34,7 @@ public class MainGame {
             loadItems(itemFactory, shop, loader.Load(shopFile));
             loadPlayer(shop, player);
             System.out.println("Player is equipped with " + player.getCurrentArmor().getName());
-            System.out.println("player is equipped with " + player.getCurrentWeapon().getName());
+            System.out.println("Player is equipped with " + player.getCurrentWeapon().getName());
         }
         catch(InvalidFileException e) {
             System.out.println("Failed to load items ");
