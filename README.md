@@ -1,4 +1,4 @@
-OOSE Assignment for turn based combat system
+Terminal RPG Game designed using software patterns
 - RUN WITH ant then java -jar in dist folder to play the game
 
 - MVC:
